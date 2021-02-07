@@ -3,11 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\DocumentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
+ * @ORM\Table(name="document", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="document_uk", columns={"label", "start_date"})
+ * })
  */
+
 class Document
 {
     /**
@@ -16,11 +22,6 @@ class Document
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $code;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -33,12 +34,12 @@ class Document
     private $label;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $start_date;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $end_date;
 
@@ -57,27 +58,25 @@ class Document
      */
     private $version;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Metadata::class, inversedBy="documents")
+     */
+    private $metadatas;
+
+    public function __construct()
+    {
+        $this->metadatas = new ArrayCollection();
+    }
+
     public function __toString(): string
     {
-        return $this->label;
+        return $this->label.' - '.$this->start_date->format('Y-m-d');
     }
     
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(?string $code): self
-    {
-        $this->code = $code;
-
-        return $this;
     }
 
     public function getText(): ?string
@@ -164,14 +163,28 @@ class Document
         return $this;
     }
 
-    public function toArray()
+    /**
+     * @return Collection|Metadata[]
+     */
+    public function getMetadatas(): Collection
     {
-        return [
-            'id' => $this->getId(),
-            'firstName' => $this->getFirstName(),
-            'lastName' => $this->getLastName(),
-            'email' => $this->getEmail(),
-            'phoneNumber' => $this->getPhoneNumber()
-        ];
+        return $this->metadatas;
     }
+
+    public function addMetadata(Metadata $metadata): self
+    {
+        if (!$this->metadatas->contains($metadata)) {
+            $this->metadatas[] = $metadata;
+        }
+
+        return $this;
+    }
+
+    public function removeMetadata(Metadata $metadata): self
+    {
+        $this->metadatas->removeElement($metadata);
+
+        return $this;
+    }
+
 }
