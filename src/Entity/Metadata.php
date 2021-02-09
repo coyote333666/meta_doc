@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MetadataRepository::class)
- * @ORM\Table(name="document", uniqueConstraints={
+ * @ORM\Table(name="metadata", uniqueConstraints={
  *      @ORM\UniqueConstraint(name="metadata_uk", columns={"code"})
  * })
  */
@@ -37,9 +37,20 @@ class Metadata
      */
     private $documents;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Classification::class, inversedBy="metadata")
+     */
+    private $classifications;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=DublinCore::class, inversedBy="metadatas")
+     */
+    private $dublinCore;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
+        $this->classifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -97,4 +108,41 @@ class Metadata
 
         return $this;
     }
+
+    /**
+     * @return Collection|Classification[]
+     */
+    public function getClassifications(): Collection
+    {
+        return $this->classifications;
+    }
+
+    public function addClassification(Classification $classification): self
+    {
+        if (!$this->classifications->contains($classification)) {
+            $this->classifications[] = $classification;
+        }
+
+        return $this;
+    }
+
+    public function removeClassification(Classification $classification): self
+    {
+        $this->classifications->removeElement($classification);
+
+        return $this;
+    }
+
+    public function getDublinCore(): ?DublinCore
+    {
+        return $this->dublinCore;
+    }
+
+    public function setDublinCore(?DublinCore $dublinCore): self
+    {
+        $this->dublinCore = $dublinCore;
+
+        return $this;
+    }
+
 }

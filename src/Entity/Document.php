@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
  * @ORM\Table(name="document", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="document_uk", columns={"label", "start_date"})
+ *      @ORM\UniqueConstraint(name="document_uk", columns={"label", "classification_id"})
  * })
  */
 
@@ -63,9 +63,33 @@ class Document
      */
     private $metadatas;
 
+    /**
+     * @ORM\OneToMany(targetEntity=DocumentDocument::class, mappedBy="document_source")
+     */
+    private $documentSources;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DocumentDocument::class, mappedBy="document_target")
+     */
+    private $documentTargets;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Classification::class, inversedBy="documents")
+     */
+    private $classification;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $code;
+
+
+
     public function __construct()
     {
         $this->metadatas = new ArrayCollection();
+        $this->documentSources = new ArrayCollection();
+        $this->documentTargets = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -183,6 +207,90 @@ class Document
     public function removeMetadata(Metadata $metadata): self
     {
         $this->metadatas->removeElement($metadata);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DocumentDocument[]
+     */
+    public function getDocumentSources(): Collection
+    {
+        return $this->documentSources;
+    }
+
+    public function addDocumentSource(DocumentDocument $documentSource): self
+    {
+        if (!$this->documentSources->contains($documentSource)) {
+            $this->documentSources[] = $documentSource;
+            $documentSource->setDocumentSource($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocumentSource(DocumentDocument $documentSource): self
+    {
+        if ($this->documentSources->removeElement($documentSource)) {
+            // set the owning side to null (unless already changed)
+            if ($documentSource->getDocumentSource() === $this) {
+                $documentSource->setDocumentSource(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DocumentDocument[]
+     */
+    public function getDocumentTargets(): Collection
+    {
+        return $this->documentTargets;
+    }
+
+    public function addDocumentTarget(DocumentDocument $documentTarget): self
+    {
+        if (!$this->documentTargets->contains($documentTarget)) {
+            $this->documentTargets[] = $documentTarget;
+            $documentTarget->setDocumentTarget($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocumentTarget(DocumentDocument $documentTarget): self
+    {
+        if ($this->documentTargets->removeElement($documentTarget)) {
+            // set the owning side to null (unless already changed)
+            if ($documentTarget->getDocumentTarget() === $this) {
+                $documentTarget->setDocumentTarget(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getClassification(): ?Classification
+    {
+        return $this->classification;
+    }
+
+    public function setClassification(?Classification $classification): self
+    {
+        $this->classification = $classification;
+
+        return $this;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): self
+    {
+        $this->code = $code;
 
         return $this;
     }

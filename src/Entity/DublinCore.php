@@ -9,7 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=DublinCoreRepository::class)
- */
+ * @ORM\Table(name="dublin_core", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="dublin_core_uk", columns={"code"})
+ * })
+*/
 class DublinCore
 {
     /**
@@ -27,16 +30,27 @@ class DublinCore
     /**
      * @ORM\Column(type="boolean")
      */
-    private $relation;
+    private $is_relation;
 
     /**
      * @ORM\Column(type="string", length=4000, nullable=true)
      */
     private $descrip;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Metadata::class, mappedBy="dublinCore")
+     */
+    private $metadatas;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DocumentDocument::class, mappedBy="dublin_core")
+     */
+    private $documentDocuments;
+
     public function __construct()
     {
-        $this->relations = new ArrayCollection();
+        $this->metadatas = new ArrayCollection();
+        $this->documentDocuments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,14 +70,14 @@ class DublinCore
         return $this;
     }
 
-    public function getRelation(): ?bool
+    public function getIsRelation(): ?bool
     {
-        return $this->relation;
+        return $this->is_relation;
     }
 
-    public function setRelation(bool $relation): self
+    public function setIsRelation(bool $is_relation): self
     {
-        $this->relation = $relation;
+        $this->is_relation = $is_relation;
 
         return $this;
     }
@@ -76,6 +90,66 @@ class DublinCore
     public function setDescrip(?string $descrip): self
     {
         $this->descrip = $descrip;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Metadata[]
+     */
+    public function getMetadatas(): Collection
+    {
+        return $this->metadatas;
+    }
+
+    public function addMetadata(Metadata $metadata): self
+    {
+        if (!$this->metadatas->contains($metadata)) {
+            $this->metadatas[] = $metadata;
+            $metadata->setDublinCore($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMetadata(Metadata $metadata): self
+    {
+        if ($this->metadatas->removeElement($metadata)) {
+            // set the owning side to null (unless already changed)
+            if ($metadata->getDublinCore() === $this) {
+                $metadata->setDublinCore(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DocumentDocument[]
+     */
+    public function getDocumentDocuments(): Collection
+    {
+        return $this->documentDocuments;
+    }
+
+    public function addDocumentDocument(DocumentDocument $documentDocument): self
+    {
+        if (!$this->documentDocuments->contains($documentDocument)) {
+            $this->documentDocuments[] = $documentDocument;
+            $documentDocument->setDublinCore($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocumentDocument(DocumentDocument $documentDocument): self
+    {
+        if ($this->documentDocuments->removeElement($documentDocument)) {
+            // set the owning side to null (unless already changed)
+            if ($documentDocument->getDublinCore() === $this) {
+                $documentDocument->setDublinCore(null);
+            }
+        }
 
         return $this;
     }
