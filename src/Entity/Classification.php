@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ClassificationRepository::class)
   * @ORM\Table(name="classification", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="classification_uk", columns={"code", "classification_id"})
+ *      @ORM\UniqueConstraint(name="classification_uk", columns={"code"})
  * })
 */
 class Classification
@@ -63,6 +63,11 @@ class Classification
         $this->users = new ArrayCollection();
         $this->classifications = new ArrayCollection();
         $this->documents = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->code;
     }
 
     public function getId(): ?int

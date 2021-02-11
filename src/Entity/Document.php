@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
  * @ORM\Table(name="document", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="document_uk", columns={"label", "classification_id"})
+ *      @ORM\UniqueConstraint(name="document_uk", columns={"label", "start_date", "version"})
  * })
  */
 
@@ -34,12 +34,12 @@ class Document
     private $label;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $start_date;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $end_date;
 
@@ -94,7 +94,7 @@ class Document
 
     public function __toString(): string
     {
-        return $this->label.' - '.$this->start_date->format('Y-m-d');
+        return $this->label.'.'.$this->start_date->format('Y-m-d').'.'.$this->version;
     }
     
 
