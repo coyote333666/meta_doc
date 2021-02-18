@@ -6,12 +6,14 @@ use App\Repository\DocumentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
- * @ORM\Table(name="document", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="document_uk", columns={"label", "start_date", "version"})
- * })
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity("slug")
  */
 
 class Document
@@ -31,11 +33,13 @@ class Document
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Assert\NotBlank]
     private $label;
 
     /**
      * @ORM\Column(type="date")
      */
+    #[Assert\NotBlank]
     private $start_date;
 
     /**
@@ -75,13 +79,15 @@ class Document
 
     /**
      * @ORM\ManyToOne(targetEntity=Classification::class, inversedBy="documents")
+     * @ORM\JoinColumn(nullable=false)
      */
+    #[Assert\NotBlank]
     private $classification;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=500, unique=true)
      */
-    private $code;
+    private $slug;
 
 
 
@@ -283,16 +289,32 @@ class Document
         return $this;
     }
 
-    public function getCode(): ?string
+    public function getSlug(): ?string
     {
-        return $this->code;
+        return $this->slug;
     }
 
-    public function setCode(?string $code): self
+    public function setSlug(?string $slug): self
     {
-        $this->code = $code;
+        $this->slug = $slug;
 
         return $this;
     }
+
+    /**
+    * @ORM\PrePersist
+    */
+    public function setStartDateValue()
+    {
+        $this->start_date = new \DateTime();
+    }
+
+    public function computeSlug(SluggerInterface $slugger)
+    {
+        if (!$this->slug || '-' === $this->slug) {
+            $this->slug = (string) $slugger->slug((string) $this)->lower();
+        }
+    }
+    
 
 }

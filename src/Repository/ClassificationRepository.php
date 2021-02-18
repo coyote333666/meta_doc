@@ -19,6 +19,11 @@ class ClassificationRepository extends ServiceEntityRepository
         parent::__construct($registry, Classification::class);
     }
 
+    public function findAll()
+    {
+        return $this->findBy([], ['code' => 'ASC']);
+    }
+
     // /**
     //  * @return Classification[] Returns an array of Classification objects
     //  */

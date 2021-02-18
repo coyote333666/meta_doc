@@ -82,8 +82,8 @@ CREATE TABLE public.document (
     code character varying(50) DEFAULT NULL::character varying,
     text text,
     label character varying(255) NOT NULL,
-    start_date timestamp(0) without time zone NOT NULL,
-    end_date timestamp(0) without time zone,
+    start_date date NOT NULL,
+    end_date date,
     state character varying(255) DEFAULT NULL::character varying,
     uri character varying(4000) DEFAULT NULL::character varying,
     version character varying(20) DEFAULT NULL::character varying,
@@ -248,6 +248,8 @@ ALTER TABLE public.user_id_seq OWNER TO main;
 --
 
 COPY public.classification (id, code, descrip, classification_id) FROM stdin;
+1	00000	Classif niveau 0	\N
+2	00001	Classif niveau 1	\N
 \.
 
 
@@ -286,6 +288,16 @@ DoctrineMigrations\\Version20210209035757	2021-02-09 22:36:33	1
 DoctrineMigrations\\Version20210209042028	2021-02-09 22:36:33	10
 DoctrineMigrations\\Version20210209042613	2021-02-09 22:36:33	10
 DoctrineMigrations\\Version20210209043949	2021-02-09 22:36:33	5
+DoctrineMigrations\\Version20210209044208	2021-02-10 11:43:46	32
+DoctrineMigrations\\Version20210210164308	2021-02-10 11:58:50	14
+DoctrineMigrations\\Version20210209044542	\N	\N
+DoctrineMigrations\\Version20210209044744	\N	\N
+DoctrineMigrations\\Version20210209045122	\N	\N
+DoctrineMigrations\\Version20210209130008	\N	\N
+DoctrineMigrations\\Version20210210032647	\N	\N
+DoctrineMigrations\\Version20210210033801	\N	\N
+DoctrineMigrations\\Version20210210173151	2021-02-10 12:32:51	70
+DoctrineMigrations\\Version20210211180353	2021-02-11 13:03:57	29
 \.
 
 
@@ -294,6 +306,7 @@ DoctrineMigrations\\Version20210209043949	2021-02-09 22:36:33	5
 --
 
 COPY public.document (id, code, text, label, start_date, end_date, state, uri, version, classification_id) FROM stdin;
+1	\N	Document test 1	doc1	2021-02-10	\N	en travail	\N	\N	\N
 \.
 
 
@@ -349,7 +362,7 @@ COPY public."user" (id, ldap_id, first_name, last_name) FROM stdin;
 -- Name: classification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.classification_id_seq', 1, false);
+SELECT pg_catalog.setval('public.classification_id_seq', 2, true);
 
 
 --
@@ -363,7 +376,7 @@ SELECT pg_catalog.setval('public.document_document_id_seq', 1, false);
 -- Name: document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.document_id_seq', 1, false);
+SELECT pg_catalog.setval('public.document_id_seq', 1, true);
 
 
 --
@@ -471,14 +484,21 @@ ALTER TABLE ONLY public."user"
 -- Name: classification_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE UNIQUE INDEX classification_uk ON public.classification USING btree (code, classification_id);
+CREATE UNIQUE INDEX classification_uk ON public.classification USING btree (code);
+
+
+--
+-- Name: document_document_uk; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE UNIQUE INDEX document_document_uk ON public.document_document USING btree (document_source_id, document_target_id, dublin_core_id);
 
 
 --
 -- Name: document_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE UNIQUE INDEX document_uk ON public.document USING btree (label, classification_id);
+CREATE UNIQUE INDEX document_uk ON public.document USING btree (code);
 
 
 --

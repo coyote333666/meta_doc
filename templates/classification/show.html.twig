@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classification Guestbook - {{ classification }}{% endblock %}
+
+{% block body %}
+    <h2 class="mb-5">
+        {{ classification }} Classification
+    </h2>
+
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            {% if documents|length > 0 %}
+                {% for document in documents %}
+                    <div class="media shadow border rounded-lg p-3 mb-4">
+
+                        <div class="media-body">
+                            <h4 class="font-weight-light mb-0">
+                                {{ document.label }}
+                            </h4>
+
+
+                            <div class="document-text">
+                                {{ document.text|nl2br }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div>There are {{ documents|length }} documents.</div>
+                {% if previous >= 0 %}
+                    <a href="{{ path('classification', { code: classification.code, offset: previous }) }}">Previous</a>
+                {% endif %}
+                {% if next < documents|length %}
+                    <a href="{{ path('classification', { code: classification.code, offset: next }) }}">Next</a>
+                {% endif %}
+            {% else %}
+                <div class="text-center">
+                    No documents have been posted yet for this classification.
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="bg-light shadow border rounded-lg p-4">
+                <h3 class="font-weight-light">
+                    Add your own documents
+                </h3>
+
+                {{ form(document_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

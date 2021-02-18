@@ -30,7 +30,7 @@ class Metadata
     /**
      * @ORM\Column(type="string", length=4000, nullable=true)
      */
-    private $descrip;
+    private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Document::class, mappedBy="metadatas")
@@ -70,14 +70,14 @@ class Metadata
         return $this;
     }
 
-    public function getDescrip(): ?string
+    public function getDescription(): ?string
     {
-        return $this->descrip;
+        return $this->description;
     }
 
-    public function setDescrip(?string $descrip): self
+    public function setDescription(?string $description): self
     {
-        $this->descrip = $descrip;
+        $this->description = $description;
 
         return $this;
     }

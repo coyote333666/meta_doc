@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Document;
+use App\Entity\Classification;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * @method Document|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,9 +16,24 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DocumentRepository extends ServiceEntityRepository
 {
+    public const PAGINATOR_PER_PAGE = 2;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Document::class);
+    }
+
+    public function getDocumentPaginator(Classification $classification, int $offset): Paginator
+    {
+        $query = $this->createQueryBuilder('c')
+            ->andWhere('c.classification = :classification')
+            ->setParameter('classification', $classification)
+            ->orderBy('c.start_date', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery()
+        ;
+         return new Paginator($query);
     }
 
     // /**

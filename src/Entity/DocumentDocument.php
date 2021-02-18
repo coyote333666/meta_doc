@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentDocumentRepository::class)
+ * @ORM\Table(name="document_document", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="document_document_uk", columns={"document_source_id","document_target_id","dublin_core_id"})
+ * })
  */
 class DocumentDocument
 {

@@ -14,13 +14,18 @@
         "easycorp/easyadmin-bundle": "^3",
         "fakerphp/faker": "^1.13",
         "sensio/framework-extra-bundle": "^6.0",
+        "stof/doctrine-extensions-bundle": "^1.5",
         "symfony/console": "5.2.*",
         "symfony/dotenv": "5.2.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.2.*",
         "symfony/monolog-bundle": "^3.6",
         "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/security-bundle": "5.2.*",
+        "symfony/string": "5.2.*",
         "symfony/twig-bundle": "^5.2",
+        "symfony/validator": "5.2.*",
+        "symfony/webpack-encore-bundle": "^1.11",
         "symfony/yaml": "5.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3",
@@ -65,12 +70,14 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "5.2.*"
         }
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "^6",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "^5.2",
         "symfony/css-selector": "^5.2",
         "symfony/debug-bundle": "^5.2",
