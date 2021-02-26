@@ -6,10 +6,12 @@ use App\Repository\ClassificationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
+ * @Gedmo\Tree(type="nested")
  * @ORM\Entity(repositoryClass=ClassificationRepository::class)
-  * @ORM\Table(name="classification", uniqueConstraints={
+ * @ORM\Table(name="classification", uniqueConstraints={
  *      @ORM\UniqueConstraint(name="classification_uk", columns={"code"})
  * })
 */
@@ -38,9 +40,9 @@ class Classification
     private $metadata;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="classifications")
+     * @ORM\ManyToMany(targetEntity=Admin::class, inversedBy="classifications")
      */
-    private $users;
+    private $admins;
 
     /**
      * @ORM\ManyToOne(targetEntity=Classification::class, inversedBy="classifications")
@@ -60,7 +62,7 @@ class Classification
     public function __construct()
     {
         $this->metadata = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->admins = new ArrayCollection();
         $this->classifications = new ArrayCollection();
         $this->documents = new ArrayCollection();
     }
@@ -127,25 +129,25 @@ class Classification
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection|Admin[]
      */
-    public function getUsers(): Collection
+    public function getAdmins(): Collection
     {
-        return $this->users;
+        return $this->admins;
     }
 
-    public function addUser(User $user): self
+    public function addAdmin(Admin $admin): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
+        if (!$this->admins->contains($admin)) {
+            $this->admins[] = $admin;
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeAdmin(Admin $admin): self
     {
-        $this->users->removeElement($user);
+        $this->admins->removeElement($admin);
 
         return $this;
     }
