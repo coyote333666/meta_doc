@@ -15,10 +15,9 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 50; $i++) {
             $document = new Document();
-            $document->setLabel($faker->text($maxNbChars = 10) );
+            $document->setTitle($faker->text($maxNbChars = 10) );
             $document->setStartDate($faker->date());
             $document->setText($faker->text);
-            $document->setCode($faker->text($maxNbChars = 10));
             $manager->persist($document);
         }
 

@@ -17,7 +17,7 @@ class DocumentFormType extends AbstractType
     {
         $builder
             ->add('text')
-            ->add('label')
+            ->add('title')
             ->add('start_date')
             ->add('end_date')
             ->add('state')

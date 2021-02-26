@@ -112,4 +112,31 @@ class Admin implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return Collection|Classification[]
+     */
+    public function getClassifications(): Collection
+    {
+        return $this->classifications;
+    }
+
+    public function addClassification(Classification $classification): self
+    {
+        if (!$this->classifications->contains($classification)) {
+            $this->classifications[] = $classification;
+            $classification->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClassification(Classification $classification): self
+    {
+        if ($this->classifications->removeElement($classification)) {
+            $classification->removeUser($this);
+        }
+
+        return $this;
+    }
 }

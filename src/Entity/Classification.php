@@ -6,13 +6,11 @@ use App\Repository\ClassificationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @Gedmo\Tree(type="nested")
  * @ORM\Entity(repositoryClass=ClassificationRepository::class)
  * @ORM\Table(name="classification", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="classification_uk", columns={"code"})
+ *       @ORM\UniqueConstraint(name="classification_uk", columns={"code"})
  * })
 */
 class Classification
@@ -25,12 +23,17 @@ class Classification
     private $id;
 
     /**
+     * @ORM\Column(name="title", type="string", length=500)
+     */
+    private $title;
+
+    /**
      * @ORM\Column(type="string", length=50)
      */
     private $code;
 
     /**
-     * @ORM\Column(type="string", length=4000, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
@@ -45,16 +48,6 @@ class Classification
     private $admins;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Classification::class, inversedBy="classifications")
-     */
-    private $classification;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Classification::class, mappedBy="classification")
-     */
-    private $classifications;
-
-    /**
      * @ORM\OneToMany(targetEntity=Document::class, mappedBy="classification")
      */
     private $documents;
@@ -63,7 +56,6 @@ class Classification
     {
         $this->metadata = new ArrayCollection();
         $this->admins = new ArrayCollection();
-        $this->classifications = new ArrayCollection();
         $this->documents = new ArrayCollection();
     }
 
@@ -152,48 +144,6 @@ class Classification
         return $this;
     }
 
-    public function getClassification(): ?self
-    {
-        return $this->classification;
-    }
-
-    public function setClassification(?self $classification): self
-    {
-        $this->classification = $classification;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getClassifications(): Collection
-    {
-        return $this->classifications;
-    }
-
-    public function addClassification(self $classification): self
-    {
-        if (!$this->classifications->contains($classification)) {
-            $this->classifications[] = $classification;
-            $classification->setClassification($this);
-        }
-
-        return $this;
-    }
-
-    public function removeClassification(self $classification): self
-    {
-        if ($this->classifications->removeElement($classification)) {
-            // set the owning side to null (unless already changed)
-            if ($classification->getClassification() === $this) {
-                $classification->setClassification(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|Document[]
      */
@@ -222,5 +172,15 @@ class Classification
         }
 
         return $this;
+    }
+    
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    public function getTitle()
+    {
+        return $this->title;
     }
 }

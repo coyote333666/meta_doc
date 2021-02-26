@@ -34,7 +34,7 @@ class Document
      * @ORM\Column(type="string", length=255)
      */
     #[Assert\NotBlank]
-    private $label;
+    private $title;
 
     /**
      * @ORM\Column(type="date")
@@ -53,7 +53,7 @@ class Document
     private $state;
 
     /**
-     * @ORM\Column(type="string", length=4000, nullable=true)
+     * @ORM\Column(type="string", length=4000, nullable=false)
      */
     private $uri;
 
@@ -100,7 +100,7 @@ class Document
 
     public function __toString(): string
     {
-        return $this->label.'.'.$this->start_date->format('Y-m-d').'.'.$this->version;
+        return $this->title.'.'.$this->start_date->format('Y-m-d').'.'.$this->version;
     }
     
 
@@ -121,14 +121,14 @@ class Document
         return $this;
     }
 
-    public function getLabel(): ?string
+    public function getTitle(): ?string
     {
-        return $this->label;
+        return $this->title;
     }
 
-    public function setLabel(string $label): self
+    public function setTitle(string $title): self
     {
-        $this->label = $label;
+        $this->title = $title;
 
         return $this;
     }

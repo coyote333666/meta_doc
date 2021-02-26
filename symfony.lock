@@ -279,6 +279,9 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.2.3"
+    },
     "symfony/asset": {
         "version": "v5.2.3"
     },
@@ -332,6 +335,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v5.2.2"
+    },
+    "symfony/doctrine-messenger": {
+        "version": "v5.2.3"
     },
     "symfony/dom-crawler": {
         "version": "v5.2.2"
@@ -410,6 +416,18 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "e9a414b113ceadbf4e52abe37bf8f1b443f06ccb"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/monolog-bridge": {
         "version": "v5.2.3"
     },
@@ -470,6 +488,9 @@
     "symfony/polyfill-uuid": {
         "version": "v1.22.0"
     },
+    "symfony/process": {
+        "version": "v5.2.3"
+    },
     "symfony/profiler-pack": {
         "version": "v1.0.5"
     },
@@ -481,6 +502,9 @@
     },
     "symfony/proxy-manager-bridge": {
         "version": "v5.2.2"
+    },
+    "symfony/redis-messenger": {
+        "version": "v5.2.3"
     },
     "symfony/routing": {
         "version": "5.1",

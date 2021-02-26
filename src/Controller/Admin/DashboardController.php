@@ -27,7 +27,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Meta Doc');
+            ->setTitle('MDM : Metadata Document Management');
     }
 
     public function configureMenuItems(): iterable
