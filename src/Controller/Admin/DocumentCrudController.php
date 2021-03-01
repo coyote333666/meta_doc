@@ -8,9 +8,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class DocumentCrudController extends AbstractCrudController
 {
@@ -49,7 +49,7 @@ class DocumentCrudController extends AbstractCrudController
         yield TextField::new('state');
         yield TextField::new('uri')
         ->hideOnIndex();
-        yield TextareaField::new('text')
+        yield TextEditorField::new('text')
         ->hideOnIndex();
         
         $start_date = DateField::new('start_date')->setFormTypeOptions([

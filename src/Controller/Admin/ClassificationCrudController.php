@@ -6,9 +6,9 @@ use App\Entity\Classification;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class ClassificationCrudController extends AbstractCrudController
 {
@@ -40,7 +40,7 @@ class ClassificationCrudController extends AbstractCrudController
     {
         yield TextField::new('code');
         yield TextField::new('title');
-        yield TextareaField::new('description')
+        yield TextEditorField::new('description')
             ->hideOnIndex();        
     }
 }

@@ -26,15 +26,15 @@ class DocumentDocument
     private $dublin_core;
 
     /**
-     * @ORM\ManyToOne(targetEntity=document::class, inversedBy="documentSources")
+     * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="documentSources")
      * @ORM\JoinColumn(nullable=false)
      */
     private $document_source;
 
     /**
-     * @ORM\ManyToOne(targetEntity=document::class, inversedBy="documentTargets")
+     * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="documentTargets")
      * @ORM\JoinColumn(nullable=false)
-     */
+    */
     private $document_target;
 
     public function getId(): ?int
@@ -54,24 +54,24 @@ class DocumentDocument
         return $this;
     }
 
-    public function getDocumentSource(): ?document
+    public function getDocumentSource(): ?Document
     {
         return $this->document_source;
     }
 
-    public function setDocumentSource(?document $document_source): self
+    public function setDocumentSource(?Document $document_source): self
     {
         $this->document_source = $document_source;
 
         return $this;
     }
 
-    public function getDocumentTarget(): ?document
+    public function getDocumentTarget(): ?Document
     {
         return $this->document_target;
     }
 
-    public function setDocumentTarget(?document $document_target): self
+    public function setDocumentTarget(?Document $document_target): self
     {
         $this->document_target = $document_target;
 

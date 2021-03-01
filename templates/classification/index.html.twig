@@ -4,7 +4,7 @@
 
 {% block body %}
     <h2 class="mb-5">
-        Give your feedback!
+        Index of classifications
     </h2>
 
     {% for row in classifications|batch(4) %}
@@ -15,8 +15,11 @@
                         <div class="card-body">
                             <div class="card-title">
                                 <h4 class="font-weight-light">
-                                    {{ classification }}
+                                    {{ classification }} {{ classification.title }}<br>
                                 </h4>
+                                <h5 class="font-weight-light">
+                                 {{ classification.description }}
+                                </h5>
                             </div>
 
                             <a href="{{ path('classification', { code: classification.code }) }}"
