@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=MetadataRepository::class)
  * @ORM\Table(name="metadata", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="metadata_uk", columns={"code"})
+ *      @ORM\UniqueConstraint(name="metadata_uk", columns={"term"})
  * })
  */
 class Metadata
@@ -25,7 +25,7 @@ class Metadata
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $code;
+    private $term;
 
     /**
      * @ORM\Column(type="string", length=4000, nullable=true)
@@ -43,9 +43,9 @@ class Metadata
     private $classifications;
 
     /**
-     * @ORM\ManyToOne(targetEntity=DublinCore::class, inversedBy="metadatas")
-     */
-    private $dublinCore;
+     * @ORM\ManyToOne(targetEntity=DublinCoreElement::class, inversedBy="metadatas")
+    */
+    private $dublin_core;
 
     public function __construct()
     {
@@ -53,19 +53,24 @@ class Metadata
         $this->classifications = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->term;
+    }
+  
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCode(): ?string
+    public function getTerm(): ?string
     {
-        return $this->code;
+        return $this->term;
     }
 
-    public function setCode(string $code): self
+    public function setTerm(string $term): self
     {
-        $this->code = $code;
+        $this->term = $term;
 
         return $this;
     }
@@ -133,14 +138,14 @@ class Metadata
         return $this;
     }
 
-    public function getDublinCore(): ?DublinCore
+    public function getDublinCore(): ?DublinCoreElement
     {
-        return $this->dublinCore;
+        return $this->dublin_core;
     }
 
-    public function setDublinCore(?DublinCore $dublinCore): self
+    public function setDublinCore(?DublinCoreElement $dublin_core): self
     {
-        $this->dublinCore = $dublinCore;
+        $this->dublin_core = $dublin_core;
 
         return $this;
     }

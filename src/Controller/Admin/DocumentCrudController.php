@@ -34,7 +34,14 @@ class DocumentCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('document'))
+            ->add('classification')
+            ->add('title')
+            ->add('version')
+            ->add('state')
+            ->add('uri')
+            ->add('text')
+            ->add('start_date')
+            ->add('end_date')
         ;
     }
     

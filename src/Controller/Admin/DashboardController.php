@@ -4,8 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Document;
 use App\Entity\Classification;
-use App\Entity\DocumentDocument;
-use App\Entity\DublinCore;
+use App\Entity\DocumentRelation;
+use App\Entity\DublinCoreElement;
+use App\Entity\DublinCoreRelation;
 use App\Entity\Metadata;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -38,8 +39,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
         yield MenuItem::linkToCrud('Documents', 'fas fa-file', Document::class);
         yield MenuItem::linkToCrud('Classifications', 'fas fa-tree', Classification::class);
-        yield MenuItem::linkToCrud('Document relations', 'fas fa-bezier-curve', DocumentDocument::class);
-        yield MenuItem::linkToCrud('Dublin core', 'fas fa-key', DublinCore::class);
+        yield MenuItem::linkToCrud('Document relations', 'fas fa-bezier-curve', DocumentRelation::class);
+        yield MenuItem::linkToCrud('Dublin core element', 'fas fa-key', DublinCoreElement::class);
+        yield MenuItem::linkToCrud('Dublin core relation', 'fas fa-key', DublinCoreRelation::class);
         yield MenuItem::linkToCrud('Metadata', 'fas fa-file-code', Metadata::class);
     }
 }

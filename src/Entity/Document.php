@@ -53,7 +53,7 @@ class Document
     private $state;
 
     /**
-     * @ORM\Column(type="string", length=4000, nullable=false)
+     * @ORM\Column(type="string", length=4000, nullable=true)
      */
     private $uri;
 
@@ -68,12 +68,12 @@ class Document
     private $metadatas;
 
     /**
-     * @ORM\OneToMany(targetEntity=DocumentDocument::class, mappedBy="document_source")
+     * @ORM\OneToMany(targetEntity=DocumentRelation::class, mappedBy="document_source")
      */
     private $documentSources;
 
     /**
-     * @ORM\OneToMany(targetEntity=DocumentDocument::class, mappedBy="document_target")
+     * @ORM\OneToMany(targetEntity=DocumentRelation::class, mappedBy="document_target")
      */
     private $documentTargets;
 
@@ -103,7 +103,6 @@ class Document
         return $this->title.'.'.$this->start_date->format('Y-m-d').'.'.$this->version;
     }
     
-
     public function getId(): ?int
     {
         return $this->id;
@@ -218,14 +217,14 @@ class Document
     }
 
     /**
-     * @return Collection|DocumentDocument[]
+     * @return Collection|DocumentRelation[]
      */
     public function getDocumentSources(): Collection
     {
         return $this->documentSources;
     }
 
-    public function addDocumentSource(DocumentDocument $documentSource): self
+    public function addDocumentSource(DocumentRelation $documentSource): self
     {
         if (!$this->documentSources->contains($documentSource)) {
             $this->documentSources[] = $documentSource;
@@ -235,7 +234,7 @@ class Document
         return $this;
     }
 
-    public function removeDocumentSource(DocumentDocument $documentSource): self
+    public function removeDocumentSource(DocumentRelation $documentSource): self
     {
         if ($this->documentSources->removeElement($documentSource)) {
             // set the owning side to null (unless already changed)
@@ -248,14 +247,14 @@ class Document
     }
 
     /**
-     * @return Collection|DocumentDocument[]
+     * @return Collection|DocumentRelation[]
      */
     public function getDocumentTargets(): Collection
     {
         return $this->documentTargets;
     }
 
-    public function addDocumentTarget(DocumentDocument $documentTarget): self
+    public function addDocumentTarget(DocumentRelation $documentTarget): self
     {
         if (!$this->documentTargets->contains($documentTarget)) {
             $this->documentTargets[] = $documentTarget;
@@ -265,7 +264,7 @@ class Document
         return $this;
     }
 
-    public function removeDocumentTarget(DocumentDocument $documentTarget): self
+    public function removeDocumentTarget(DocumentRelation $documentTarget): self
     {
         if ($this->documentTargets->removeElement($documentTarget)) {
             // set the owning side to null (unless already changed)

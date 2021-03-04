@@ -2,16 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\DocumentDocumentRepository;
+use App\Repository\DocumentRelationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DocumentDocumentRepository::class)
- * @ORM\Table(name="document_document", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="document_document_uk", columns={"document_source_id","document_target_id","dublin_core_id"})
+ * @ORM\Entity(repositoryClass=DocumentRelationRepository::class)
+ * @ORM\Table(name="document_relation", uniqueConstraints={
+ *      @ORM\UniqueConstraint(name="document_relation_uk", columns={"document_source_id","document_target_id","dublin_core_id"})
  * })
  */
-class DocumentDocument
+class DocumentRelation
 {
     /**
      * @ORM\Id
@@ -21,7 +21,7 @@ class DocumentDocument
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=DublinCore::class, inversedBy="documentDocuments")
+     * @ORM\ManyToOne(targetEntity=DublinCoreRelation::class, inversedBy="documentRelations")
      */
     private $dublin_core;
 
@@ -42,12 +42,12 @@ class DocumentDocument
         return $this->id;
     }
 
-    public function getDublinCore(): ?DublinCore
+    public function getDublinCore(): ?DublinCoreRelation
     {
         return $this->dublin_core;
     }
 
-    public function setDublinCore(?DublinCore $dublin_core): self
+    public function setDublinCore(?DublinCoreRelation $dublin_core): self
     {
         $this->dublin_core = $dublin_core;
 

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\DocumentDocument;
+use App\Entity\DublinCoreRelation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method DocumentDocument|null find($id, $lockMode = null, $lockVersion = null)
- * @method DocumentDocument|null findOneBy(array $criteria, array $orderBy = null)
- * @method DocumentDocument[]    findAll()
- * @method DocumentDocument[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method DublinCoreRelation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method DublinCoreRelation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method DublinCoreRelation[]    findAll()
+ * @method DublinCoreRelation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DocumentDocumentRepository extends ServiceEntityRepository
+class DublinCoreRelationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DocumentDocument::class);
+        parent::__construct($registry, DublinCoreRelation::class);
     }
 
     // /**
-    //  * @return DocumentDocument[] Returns an array of DocumentDocument objects
+    //  * @return DublinCoreRelation[] Returns an array of DublinCoreRelation objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class DocumentDocumentRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?DocumentDocument
+    public function findOneBySomeField($value): ?DublinCoreRelation
     {
         return $this->createQueryBuilder('d')
             ->andWhere('d.exampleField = :val')

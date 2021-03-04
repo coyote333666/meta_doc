@@ -43,11 +43,6 @@ class Classification
     private $metadata;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Admin::class, inversedBy="classifications")
-     */
-    private $admins;
-
-    /**
      * @ORM\OneToMany(targetEntity=Document::class, mappedBy="classification")
      */
     private $documents;
@@ -55,7 +50,6 @@ class Classification
     public function __construct()
     {
         $this->metadata = new ArrayCollection();
-        $this->admins = new ArrayCollection();
         $this->documents = new ArrayCollection();
     }
 
@@ -116,30 +110,6 @@ class Classification
         if ($this->metadata->removeElement($metadata)) {
             $metadata->removeClassification($this);
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Admin[]
-     */
-    public function getAdmins(): Collection
-    {
-        return $this->admins;
-    }
-
-    public function addAdmin(Admin $admin): self
-    {
-        if (!$this->admins->contains($admin)) {
-            $this->admins[] = $admin;
-        }
-
-        return $this;
-    }
-
-    public function removeAdmin(Admin $admin): self
-    {
-        $this->admins->removeElement($admin);
 
         return $this;
     }

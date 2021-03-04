@@ -20,7 +20,9 @@ class ClassificationCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('classification'))
+            ->add('code')
+            ->add('title')
+            ->add('description')
         ;
     }
 

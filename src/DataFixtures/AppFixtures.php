@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
-
+        
         for ($i = 0; $i < 50; $i++) {
             $document = new Document();
             $document->setTitle($faker->text($maxNbChars = 10) );

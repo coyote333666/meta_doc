@@ -2,18 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\DocumentDocument;
+use App\Entity\DocumentRelation;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 
-class DocumentDocumentCrudController extends AbstractCrudController
+class DocumentRelationCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return DocumentDocument::class;
+        return DocumentRelation::class;
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -22,7 +21,7 @@ class DocumentDocumentCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('Document relation')
             ->setEntityLabelInPlural('Document relations')
             ->setSearchFields(['dublin_core', 'document_source', 'document_target'])
-            ->setPageTitle('edit', fn (DocumentDocument $documentDocument) => sprintf('Editing <b>%s</b>', $documentDocument->getDublinCore()))    
+            ->setPageTitle('edit', fn (DocumentRelation $documentRelation) => sprintf('Editing <b>%s</b>', $documentRelation->getDublinCore()))    
             ->setPageTitle('index', '%entity_label_plural% listing')
             ->setDefaultSort(['dublin_core' => 'ASC','document_source' => 'ASC','document_target' => 'ASC']);
     }
@@ -30,7 +29,9 @@ class DocumentDocumentCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add(EntityFilter::new('documentDocument'))
+            ->add('dublin_core')
+            ->add('document_source')
+            ->add('document_target')
         ;
     }
     
