@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=DocumentRelationRepository::class)
  * @ORM\Table(name="document_relation", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="document_relation_uk", columns={"document_source_id","document_target_id","dublin_core_id"})
+ *      @ORM\UniqueConstraint(name="document_relation_uk", columns={"document_source_id","document_target_id","dublin_core_relation_id"})
  * })
  */
 class DocumentRelation
@@ -23,7 +23,7 @@ class DocumentRelation
     /**
      * @ORM\ManyToOne(targetEntity=DublinCoreRelation::class, inversedBy="documentRelations")
      */
-    private $dublin_core;
+    private $dublin_core_relation;
 
     /**
      * @ORM\ManyToOne(targetEntity=Document::class, inversedBy="documentSources")
@@ -42,14 +42,14 @@ class DocumentRelation
         return $this->id;
     }
 
-    public function getDublinCore(): ?DublinCoreRelation
+    public function getDublinCoreRelation(): ?DublinCoreRelation
     {
-        return $this->dublin_core;
+        return $this->dublin_core_relation;
     }
 
-    public function setDublinCore(?DublinCoreRelation $dublin_core): self
+    public function setDublinCoreRelation(?DublinCoreRelation $dublin_core_relation): self
     {
-        $this->dublin_core = $dublin_core;
+        $this->dublin_core_relation = $dublin_core_relation;
 
         return $this;
     }

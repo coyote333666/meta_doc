@@ -49,6 +49,7 @@ class Document
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Choice(callback="getStates")
      */
     private $state;
 
@@ -88,8 +89,6 @@ class Document
      * @ORM\Column(type="string", length=500, unique=true)
      */
     private $slug;
-
-
 
     public function __construct()
     {
@@ -314,6 +313,14 @@ class Document
             $this->slug = (string) $slugger->slug((string) $this)->lower();
         }
     }
-    
 
+    public static function getStatesChoices()
+    {
+        return ['creation' => 'creation', 'revision' => 'revision', 'active' => 'active', 'semi-active' => 'semi-active', 'inactive' => 'inactive'];
+    }
+
+    public static function getStates()
+    {
+        return ['creation', 'revision', 'active', 'semi-active', 'inactive'];
+    }
 }

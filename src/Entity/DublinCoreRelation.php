@@ -33,7 +33,7 @@ class DublinCoreRelation
     private $definition;
 
     /**
-     * @ORM\OneToMany(targetEntity=DocumentRelation::class, mappedBy="dublin_core")
+     * @ORM\OneToMany(targetEntity=DocumentRelation::class, mappedBy="dublin_core_relation")
      */
     private $documentRelations;
 
@@ -89,7 +89,7 @@ class DublinCoreRelation
     {
         if (!$this->documentRelations->contains($documentRelation)) {
             $this->documentRelations[] = $documentRelation;
-            $documentRelation->setDublinCore($this);
+            $documentRelation->setDublinCoreRelation($this);
         }
 
         return $this;
@@ -99,8 +99,8 @@ class DublinCoreRelation
     {
         if ($this->documentRelations->removeElement($documentRelation)) {
             // set the owning side to null (unless already changed)
-            if ($documentRelation->getDublinCore() === $this) {
-                $documentRelation->setDublinCore(null);
+            if ($documentRelation->getDublinCoreRelation() === $this) {
+                $documentRelation->setDublinCoreRelation(null);
             }
         }
 

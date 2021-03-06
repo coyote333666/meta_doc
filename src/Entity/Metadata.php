@@ -38,14 +38,14 @@ class Metadata
     private $documents;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Classification::class, inversedBy="metadata")
+     * @ORM\ManyToMany(targetEntity=Classification::class, mappedBy="metadatas")
      */
     private $classifications;
 
     /**
      * @ORM\ManyToOne(targetEntity=DublinCoreElement::class, inversedBy="metadatas")
     */
-    private $dublin_core;
+    private $dublin_core_element;
 
     public function __construct()
     {
@@ -126,6 +126,7 @@ class Metadata
     {
         if (!$this->classifications->contains($classification)) {
             $this->classifications[] = $classification;
+            $classification->addMetadata($this);
         }
 
         return $this;
@@ -133,19 +134,21 @@ class Metadata
 
     public function removeClassification(Classification $classification): self
     {
-        $this->classifications->removeElement($classification);
+        if ($this->classifications->removeElement($classification)) {
+            $classification->removeMetadata($this);
+        }
 
         return $this;
     }
 
-    public function getDublinCore(): ?DublinCoreElement
+    public function getDublinCoreElement(): ?DublinCoreElement
     {
-        return $this->dublin_core;
+        return $this->dublin_core_element;
     }
 
-    public function setDublinCore(?DublinCoreElement $dublin_core): self
+    public function setDublinCoreElement(?DublinCoreElement $dublin_core_element): self
     {
-        $this->dublin_core = $dublin_core;
+        $this->dublin_core_element = $dublin_core_element;
 
         return $this;
     }

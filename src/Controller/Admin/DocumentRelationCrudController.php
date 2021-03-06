@@ -20,16 +20,16 @@ class DocumentRelationCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('Document relation')
             ->setEntityLabelInPlural('Document relations')
-            ->setSearchFields(['dublin_core', 'document_source', 'document_target'])
-            ->setPageTitle('edit', fn (DocumentRelation $documentRelation) => sprintf('Editing <b>%s</b>', $documentRelation->getDublinCore()))    
+            ->setSearchFields(['dublin_core_relation', 'document_source', 'document_target'])
+            ->setPageTitle('edit', fn (DocumentRelation $documentRelation) => sprintf('Editing <b>%s</b>', $documentRelation->getDublinCoreRelation()))    
             ->setPageTitle('index', '%entity_label_plural% listing')
-            ->setDefaultSort(['dublin_core' => 'ASC','document_source' => 'ASC','document_target' => 'ASC']);
+            ->setDefaultSort(['dublin_core_relation' => 'ASC','document_source' => 'ASC','document_target' => 'ASC']);
     }
 
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('dublin_core')
+            ->add('dublin_core_relation')
             ->add('document_source')
             ->add('document_target')
         ;
@@ -38,7 +38,7 @@ class DocumentRelationCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield AssociationField::new('dublin_core');
+        yield AssociationField::new('dublin_core_relation');
         yield AssociationField::new('document_source');
         yield AssociationField::new('document_target');
     }

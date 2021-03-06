@@ -7,8 +7,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class ClassificationCrudController extends AbstractCrudController
 {
@@ -44,5 +44,6 @@ class ClassificationCrudController extends AbstractCrudController
         yield TextField::new('title');
         yield TextEditorField::new('description')
             ->hideOnIndex();        
+        yield AssociationField::new('metadatas');
     }
 }

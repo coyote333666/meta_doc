@@ -38,9 +38,9 @@ class Classification
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Metadata::class, mappedBy="classifications")
+     * @ORM\ManyToMany(targetEntity=Metadata::class, inversedBy="classifications")
      */
-    private $metadata;
+    private $metadatas;
 
     /**
      * @ORM\OneToMany(targetEntity=Document::class, mappedBy="classification")
@@ -49,7 +49,7 @@ class Classification
 
     public function __construct()
     {
-        $this->metadata = new ArrayCollection();
+        $this->metadatas = new ArrayCollection();
         $this->documents = new ArrayCollection();
     }
 
@@ -90,16 +90,15 @@ class Classification
     /**
      * @return Collection|Metadata[]
      */
-    public function getMetadata(): Collection
+    public function getMetadatas(): Collection
     {
-        return $this->metadata;
+        return $this->metadatas;
     }
 
     public function addMetadata(Metadata $metadata): self
     {
-        if (!$this->metadata->contains($metadata)) {
-            $this->metadata[] = $metadata;
-            $metadata->addClassification($this);
+        if (!$this->metadatas->contains($metadata)) {
+            $this->metadatas[] = $metadata;
         }
 
         return $this;
@@ -107,9 +106,7 @@ class Classification
 
     public function removeMetadata(Metadata $metadata): self
     {
-        if ($this->metadata->removeElement($metadata)) {
-            $metadata->removeClassification($this);
-        }
+        $this->metadatas->removeElement($metadata);
 
         return $this;
     }

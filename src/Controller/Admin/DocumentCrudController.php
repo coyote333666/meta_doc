@@ -9,7 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class DocumentCrudController extends AbstractCrudController
@@ -34,14 +34,9 @@ class DocumentCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('classification')
             ->add('title')
             ->add('version')
             ->add('state')
-            ->add('uri')
-            ->add('text')
-            ->add('start_date')
-            ->add('end_date')
         ;
     }
     
@@ -50,10 +45,12 @@ class DocumentCrudController extends AbstractCrudController
     {
         yield AssociationField::new('classification');
         yield TextField::new('slug')
-        ->hideOnIndex();
+        ->hideOnIndex()
+        ->hideOnForm();
         yield TextField::new('title');
         yield TextField::new('version');
-        yield TextField::new('state');
+        yield ChoiceField::new('state')
+        ->setChoices(fn (Document $document) => $document->getStatesChoices());
         yield TextField::new('uri')
         ->hideOnIndex();
         yield TextEditorField::new('text')
@@ -65,11 +62,13 @@ class DocumentCrudController extends AbstractCrudController
             'widget' => 'single_text',
         ]);
         yield $start_date;
+        
         $end_date = DateField::new('end_date')->setFormTypeOptions([
             'html5' => true,
             'years' => range(date('Y'), date('Y') + 5),
             'widget' => 'single_text',
         ]);
         yield $end_date;
+        yield AssociationField::new('metadatas');
     }
 }

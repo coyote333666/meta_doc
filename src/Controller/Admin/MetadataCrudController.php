@@ -27,7 +27,7 @@ class MetadataCrudController extends AbstractCrudController
             ->setSearchFields(['term', 'description'])
             ->setPageTitle('edit', fn (Metadata $metadata) => sprintf('Editing <b>%s</b>', $metadata->getTerm()))    
             ->setPageTitle('index', '%entity_label_plural% listing')
-            ->setDefaultSort(['term' => 'ASC','dublin_core' => 'ASC']);
+            ->setDefaultSort(['term' => 'ASC','dublin_core_element' => 'ASC']);
         ;
     }
 
@@ -35,7 +35,7 @@ class MetadataCrudController extends AbstractCrudController
     {
         return $filters
             ->add('term')
-            ->add('dublin_core')
+            ->add('dublin_core_element')
             ->add('description');
         }
     
@@ -43,7 +43,7 @@ class MetadataCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('term');
-        yield AssociationField::new('dublin_core');
+        yield AssociationField::new('dublin_core_element');
         yield TextareaField::new('description');
     }
 }

@@ -34,7 +34,7 @@ class DublinCoreElement
     private $definition;
 
     /**
-     * @ORM\OneToMany(targetEntity=Metadata::class, mappedBy="dublin_core")
+     * @ORM\OneToMany(targetEntity=Metadata::class, mappedBy="dublin_core_element")
      */
     private $metadatas;
 
@@ -90,7 +90,7 @@ class DublinCoreElement
     {
         if (!$this->metadatas->contains($metadata)) {
             $this->metadatas[] = $metadata;
-            $metadata->setDublinCore($this);
+            $metadata->setDublinCoreElement($this);
         }
 
         return $this;
@@ -100,8 +100,8 @@ class DublinCoreElement
     {
         if ($this->metadatas->removeElement($metadata)) {
             // set the owning side to null (unless already changed)
-            if ($metadata->getDublinCore() === $this) {
-                $metadata->setDublinCore(null);
+            if ($metadata->getDublinCoreElement() === $this) {
+                $metadata->setDublinCoreElement(null);
             }
         }
 
