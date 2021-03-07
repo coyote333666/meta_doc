@@ -314,11 +314,6 @@ class Document
         }
     }
 
-    public static function getStatesChoices()
-    {
-        return ['creation' => 'creation', 'revision' => 'revision', 'active' => 'active', 'semi-active' => 'semi-active', 'inactive' => 'inactive'];
-    }
-
     public static function getStates()
     {
         return ['creation', 'revision', 'active', 'semi-active', 'inactive'];

@@ -45,11 +45,11 @@ class ClassificationRepository extends ServiceEntityRepository
     public function findOneBySomeField($value): ?Classification
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.code = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+    */      
 }

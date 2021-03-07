@@ -24,22 +24,27 @@ class DocumentCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('Document')
             ->setEntityLabelInPlural('Documents')
-            ->setSearchFields(['title', 'slug', 'start_Date'])
+            ->setSearchFields(['title', 'version'])
             ->setPageTitle('edit', fn (Document $document) => sprintf('Editing <b>%s</b>', $document->getTitle()))    
             ->setPageTitle('index', '%entity_label_plural% listing')
             ->setDefaultSort(['start_date' => 'DESC']);
         ;
-    }
+    }    
 
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
+            ->add('classification')
             ->add('title')
             ->add('version')
             ->add('state')
-        ;
+            ->add('uri')
+            ->add('text')
+            ->add('start_date')
+            ->add('end_date')
+            ->add('metadatas')
+            ;
     }
-    
 
     public function configureFields(string $pageName): iterable
     {
@@ -50,19 +55,17 @@ class DocumentCrudController extends AbstractCrudController
         yield TextField::new('title');
         yield TextField::new('version');
         yield ChoiceField::new('state')
-        ->setChoices(fn (Document $document) => $document->getStatesChoices());
+        ->setChoices(['creation' => 'creation', 'revision' => 'revision', 'active' => 'active', 'semi-active' => 'semi-active', 'inactive' => 'inactive']);
         yield TextField::new('uri')
         ->hideOnIndex();
         yield TextEditorField::new('text')
         ->hideOnIndex();
-        
         $start_date = DateField::new('start_date')->setFormTypeOptions([
             'html5' => true,
             'years' => range(date('Y'), date('Y') + 5),
             'widget' => 'single_text',
         ]);
         yield $start_date;
-        
         $end_date = DateField::new('end_date')->setFormTypeOptions([
             'html5' => true,
             'years' => range(date('Y'), date('Y') + 5),
@@ -70,5 +73,5 @@ class DocumentCrudController extends AbstractCrudController
         ]);
         yield $end_date;
         yield AssociationField::new('metadatas');
-    }
+   }
 }
