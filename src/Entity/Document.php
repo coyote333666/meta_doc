@@ -12,6 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
+ * @ORM\Table(name="document", uniqueConstraints={
+ *       @ORM\UniqueConstraint(name="document_uk", columns={"title","start_date","version","classification_id"})
+ * })
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("slug")
  */

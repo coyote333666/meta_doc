@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=MetadataRepository::class)
  * @ORM\Table(name="metadata", uniqueConstraints={
- *      @ORM\UniqueConstraint(name="metadata_uk", columns={"term"})
+ *      @ORM\UniqueConstraint(name="metadata_uk", columns={"term","dublin_core_element_id"})
  * })
  */
 class Metadata
@@ -55,7 +55,7 @@ class Metadata
 
     public function __toString(): string
     {
-        return $this->term;
+        return $this->dublin_core_element . ' : ' .  $this->term;
     }
   
     public function getId(): ?int

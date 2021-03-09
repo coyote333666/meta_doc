@@ -42,6 +42,11 @@ class DocumentRelation
         return $this->id;
     }
 
+    public function __toString(): string
+    {
+        return $this->document_source . ' ' . $this->dublin_core_relation . ' ' . $this->document_target ;
+    }
+
     public function getDublinCoreRelation(): ?DublinCoreRelation
     {
         return $this->dublin_core_relation;

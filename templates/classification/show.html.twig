@@ -4,7 +4,7 @@
 
 {% block body %}
     <h2 class="mb-5">
-        {{ classification }} {{ classification.title }}
+        {{ classification }} 
     </h2>
 
     <div class="row">
@@ -15,12 +15,18 @@
 
                         <div class="media-body">
                             <h4 class="font-weight-light mb-0">
+                                {% if document.uri == true %}
+                                <a href="{{ document.uri }}">
+                                {% endif %}
                                 {{ document.title }}
+                                {% if document.uri == true %}
+                                </a>
+                                {% endif %}
                             </h4>
 
 
                             <div class="document-text">
-                                {{ document.text|nl2br }}
+                                {{ document.text | raw }}
                             </div>
                         </div>
                     </div>

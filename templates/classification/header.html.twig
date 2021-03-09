@@ -1,5 +1,5 @@
 {% for classification in classifications %}
     <a title="{{ classification.title }}" class="nav-classification" href="{{ path('classification', { code: classification.code }) }}">
-        {{ classification }}
+        {{ classification.code }}
     </a>
 {% endfor %}

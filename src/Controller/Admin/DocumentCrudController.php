@@ -24,7 +24,7 @@ class DocumentCrudController extends AbstractCrudController
         return $crud
             ->setEntityLabelInSingular('Document')
             ->setEntityLabelInPlural('Documents')
-            ->setSearchFields(['title', 'version'])
+            ->setSearchFields(['title', 'text'])
             ->setPageTitle('edit', fn (Document $document) => sprintf('Editing <b>%s</b>', $document->getTitle()))    
             ->setPageTitle('index', '%entity_label_plural% listing')
             ->setDefaultSort(['start_date' => 'DESC']);
