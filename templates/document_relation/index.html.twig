@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DocumentRelation index{% endblock %}
+
+{% block body %}
+    <h1>DocumentRelation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document_relation in document_relations %}
+            <tr>
+                <td>{{ document_relation.id }}</td>
+                <td>
+                    <a href="{{ path('document_relation_show', {'id': document_relation.id}) }}">show</a>
+                    <a href="{{ path('document_relation_edit', {'id': document_relation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('document_relation_new') }}">Create new</a>
+{% endblock %}

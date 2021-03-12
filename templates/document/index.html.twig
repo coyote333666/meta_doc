@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Document index{% endblock %}
+
+{% block body %}
+    <h1>Document index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Text</th>
+                <th>Title</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>State</th>
+                <th>Uri</th>
+                <th>Version</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document in documents %}
+            <tr>
+                <td>{{ document.id }}</td>
+                <td>{{ document.text }}</td>
+                <td>{{ document.title }}</td>
+                <td>{{ document.startDate ? document.startDate|date('Y-m-d') : '' }}</td>
+                <td>{{ document.endDate ? document.endDate|date('Y-m-d') : '' }}</td>
+                <td>{{ document.state }}</td>
+                <td>{{ document.uri }}</td>
+                <td>{{ document.version }}</td>
+                <td>{{ document.slug }}</td>
+                <td>
+                    <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
+                    <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('document_new') }}">Create new</a>
+{% endblock %}

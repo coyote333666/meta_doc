@@ -55,9 +55,10 @@ class ClassificationController extends AbstractController
      */
     public function show(Request $request, Classification $classification, DocumentRepository $documentRepository): Response
     {
-
         $document = new Document();
-        $form = $this->createForm(DocumentFormType::class, $document);
+        $form = $this->createForm(DocumentFormType::class, $document, [
+            'classification_choice' => $classification->getId(),
+        ]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $document->setClassification($classification);
@@ -78,5 +79,5 @@ class ClassificationController extends AbstractController
             'next' => min(count($paginator), $offset + DocumentRepository::PAGINATOR_PER_PAGE),
             'document_form' => $form->createView(),
             ]));
-    }    
+    }
 }

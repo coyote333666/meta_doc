@@ -15,17 +15,16 @@
 
                         <div class="media-body">
                             <h4 class="font-weight-light mb-0">
+                                <a href="{{ path('document_show', { id: document.id}) }}">
+                                {{ document.title }}
+                                </a>
+                            </h4>
+                            <div class="document-text">
                                 {% if document.uri == true %}
                                 <a href="{{ document.uri }}">
-                                {% endif %}
-                                {{ document.title }}
-                                {% if document.uri == true %}
+                                (source)
                                 </a>
                                 {% endif %}
-                            </h4>
-
-
-                            <div class="document-text">
                                 {{ document.text | raw }}
                             </div>
                         </div>
