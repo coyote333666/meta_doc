@@ -3,17 +3,27 @@
 {% block title %}Document{% endblock %}
 
 {% block body %}
-    <h1>Document</h1>
-
+    <div  class="media shadow border rounded-lg p-3 mb-4">
     <table class="table">
         <tbody>
+            <tr>
+                <td colspan=2><h2>
+                {% if document.uri == true %}
+                <a href="{{ document.uri }}">
+                {% endif %}
+                {{ document.title }}
+                {% if document.uri == true %}
+                </a>
+                {% endif %}
+                </h2></td>
+            </tr>
             <tr>
                 <th>Id</th>
                 <td>{{ document.id }}</td>
             </tr>
             <tr>
                 <th>Text</th>
-                <td>{{ document.text }}</td>
+                <td>{{ document.text  | raw }}</td>
             </tr>
             <tr>
                 <th>Title</th>
@@ -32,23 +42,45 @@
                 <td>{{ document.state }}</td>
             </tr>
             <tr>
-                <th>Uri</th>
-                <td>{{ document.uri }}</td>
-            </tr>
-            <tr>
                 <th>Version</th>
                 <td>{{ document.version }}</td>
             </tr>
             <tr>
-                <th>Slug</th>
-                <td>{{ document.slug }}</td>
+                <td colspan=2><h2>Tags</h2></td>
             </tr>
+            {% for metadata in document.metadatas %}
+            <tr>
+                <th>{{ metadata.getDublinCoreElement }}</th>
+                <td>{{ metadata.term }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan=2><h2>Sources</h2></td>
+            </tr>
+            {% for documentSource in document.documentSources %}
+            <tr>
+                <th>{{ documentSource.getDublinCoreRelation }}</th>
+                <td><a href="{{ path('document_show', { id: documentSource.getDocumentSource.getId}) }}">
+                {{ documentSource.getDocumentSource }}
+                </a></td>
+           </tr>
+            {% endfor %}
+            <tr>
+                <td colspan=2><h2>Targets</h2></td>
+            </tr>
+            {% for documentTarget in document.documentTargets %}
+            <tr>
+                <th>{{ documentTarget.getDublinCoreRelation }}</th>
+                <td><a href="{{ path('document_show', { id: documentTarget.getDocumentTarget.getId}) }}">
+                {{ documentTarget.getDocumentTarget }}
+                </a></td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
+    </div>
 
-    <a href="{{ path('classification', {'code': code}) }}">back to list</a>
+    <a class="btn btn-sm btn-blue stretched-link" href="{{ path('classification', {'code': code}) }}">back to list</a>
 
-    <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
 
-    {{ include('document/_delete_form.html.twig') }}
 {% endblock %}

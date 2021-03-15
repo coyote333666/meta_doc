@@ -44,6 +44,5 @@ class ClassificationCrudController extends AbstractCrudController
         yield TextField::new('title');
         yield TextEditorField::new('description')
             ->hideOnIndex();        
-        yield AssociationField::new('metadatas');
     }
 }

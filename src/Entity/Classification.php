@@ -38,18 +38,12 @@ class Classification
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Metadata::class, inversedBy="classifications")
-     */
-    private $metadatas;
-
-    /**
      * @ORM\OneToMany(targetEntity=Document::class, mappedBy="classification")
      */
     private $documents;
 
     public function __construct()
     {
-        $this->metadatas = new ArrayCollection();
         $this->documents = new ArrayCollection();
     }
 
@@ -83,30 +77,6 @@ class Classification
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Metadata[]
-     */
-    public function getMetadatas(): Collection
-    {
-        return $this->metadatas;
-    }
-
-    public function addMetadata(Metadata $metadata): self
-    {
-        if (!$this->metadatas->contains($metadata)) {
-            $this->metadatas[] = $metadata;
-        }
-
-        return $this;
-    }
-
-    public function removeMetadata(Metadata $metadata): self
-    {
-        $this->metadatas->removeElement($metadata);
 
         return $this;
     }

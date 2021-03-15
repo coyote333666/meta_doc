@@ -37,10 +37,6 @@ class Metadata
      */
     private $documents;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Classification::class, mappedBy="metadatas")
-     */
-    private $classifications;
 
     /**
      * @ORM\ManyToOne(targetEntity=DublinCoreElement::class, inversedBy="metadatas")
@@ -50,7 +46,6 @@ class Metadata
     public function __construct()
     {
         $this->documents = new ArrayCollection();
-        $this->classifications = new ArrayCollection();
     }
 
     public function __toString(): string
@@ -109,33 +104,6 @@ class Metadata
     {
         if ($this->documents->removeElement($document)) {
             $document->removeMetadata($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Classification[]
-     */
-    public function getClassifications(): Collection
-    {
-        return $this->classifications;
-    }
-
-    public function addClassification(Classification $classification): self
-    {
-        if (!$this->classifications->contains($classification)) {
-            $this->classifications[] = $classification;
-            $classification->addMetadata($this);
-        }
-
-        return $this;
-    }
-
-    public function removeClassification(Classification $classification): self
-    {
-        if ($this->classifications->removeElement($classification)) {
-            $classification->removeMetadata($this);
         }
 
         return $this;

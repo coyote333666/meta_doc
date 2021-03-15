@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Classification;
 use App\Entity\Document;
-use App\Form\DocumentFormType;
 use App\Repository\DocumentRepository;
 use App\Repository\ClassificationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -55,19 +54,6 @@ class ClassificationController extends AbstractController
      */
     public function show(Request $request, Classification $classification, DocumentRepository $documentRepository): Response
     {
-        $document = new Document();
-        $form = $this->createForm(DocumentFormType::class, $document, [
-            'classification_choice' => $classification->getId(),
-        ]);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $document->setClassification($classification);
-        
-            $this->entityManager->persist($document);
-            $this->entityManager->flush();
-        
-            return $this->redirectToRoute('classification', ['code' => $classification->getCode()]);
-        }        
 
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $documentRepository->getDocumentPaginator($classification, $offset);
@@ -77,7 +63,6 @@ class ClassificationController extends AbstractController
             'documents' => $paginator,
             'previous' => $offset - DocumentRepository::PAGINATOR_PER_PAGE,
             'next' => min(count($paginator), $offset + DocumentRepository::PAGINATOR_PER_PAGE),
-            'document_form' => $form->createView(),
             ]));
     }
 }

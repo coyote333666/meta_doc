@@ -16,7 +16,6 @@
                 <th>State</th>
                 <th>Uri</th>
                 <th>Version</th>
-                <th>Slug</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -31,7 +30,6 @@
                 <td>{{ document.state }}</td>
                 <td>{{ document.uri }}</td>
                 <td>{{ document.version }}</td>
-                <td>{{ document.slug }}</td>
                 <td>
                     <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
                     <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>

@@ -127,6 +127,18 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "8eb1cd0962ded6a6d6e1e5a9b6d3e888f9f94ff6"
+        },
+        "files": [
+            "config/packages/fos_ckeditor.yaml"
+        ]
+    },
     "gedmo/doctrine-extensions": {
         "version": "v3.0.3"
     },
@@ -267,6 +279,9 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "stfalcon/tinymce-bundle": {
+        "version": "v3.0.0"
+    },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
         "recipe": {
@@ -353,6 +368,9 @@
     },
     "symfony/event-dispatcher-contracts": {
         "version": "v2.2.0"
+    },
+    "symfony/expression-language": {
+        "version": "v5.2.4"
     },
     "symfony/filesystem": {
         "version": "v5.2.2"

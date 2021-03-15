@@ -20,11 +20,6 @@
                                 </a>
                             </h4>
                             <div class="document-text">
-                                {% if document.uri == true %}
-                                <a href="{{ document.uri }}">
-                                (source)
-                                </a>
-                                {% endif %}
                                 {{ document.text | raw }}
                             </div>
                         </div>
@@ -42,15 +37,6 @@
                     No documents have been posted yet for this classification.
                 </div>
             {% endif %}
-        </div>
-        <div class="col-12 col-lg-4">
-            <div class="bg-light shadow border rounded-lg p-4">
-                <h3 class="font-weight-light">
-                    Add your own document
-                </h3>
-
-                {{ form(document_form) }}
-            </div>
         </div>
     </div>
 {% endblock %}
