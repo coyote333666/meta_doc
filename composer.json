@@ -13,7 +13,6 @@
         "doctrine/orm": "^2.8",
         "easycorp/easyadmin-bundle": "^3",
         "fakerphp/faker": "^1.13",
-        "friendsofsymfony/ckeditor-bundle": "^2.3",
         "sensio/framework-extra-bundle": "^6.0",
         "stfalcon/tinymce-bundle": "3.0",
         "stof/doctrine-extensions-bundle": "^1.5",

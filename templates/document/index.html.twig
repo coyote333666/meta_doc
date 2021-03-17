@@ -32,7 +32,6 @@
                 <td>{{ document.version }}</td>
                 <td>
                     <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
-                    <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +42,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('document_new') }}">Create new</a>
 {% endblock %}
