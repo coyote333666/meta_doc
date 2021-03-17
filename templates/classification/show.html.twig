@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12 col-lg-8">
             {% if documents|length > 0 %}
-                {% for document in documents %}
+                {% for document in documents%}
                     <div class="media shadow border rounded-lg p-3 mb-4">
 
                         <div class="media-body">
@@ -19,7 +19,7 @@
                                 {{ document.title }}
                                 </a>
                             </h4>
-                            <div class="document-text">
+                           <div class="document-text">
                                 {{ document.text | raw }}
                             </div>
                         </div>

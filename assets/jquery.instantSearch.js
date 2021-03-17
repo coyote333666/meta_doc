@@ -34,12 +34,12 @@
         <div class="media shadow border rounded-lg p-3 mb-4">\
             <div class="media-body">\
                 <h4 class="font-weight-light mb-0">\
-                    <a href="{{ path(\'document_show\', { id: document.id}) }}">\
-                    {{ document.title }}\
+                    <a href="{{ url }}">\
+                    {{ title }}\
                     </a>\
                 </h4>\
                 <div class="document-text">\
-                    {{ document.text | raw }}\
+                    {{ summary }}\
                 </div>\
             </div>\
         </div>'

@@ -12,3 +12,6 @@ import bsCustomFileInput from 'bs-custom-file-input';
 // start the Stimulus application
 import './bootstrap';
 bsCustomFileInput.init();
+
+// loads the Bootstrap jQuery plugins
+import 'jquery'

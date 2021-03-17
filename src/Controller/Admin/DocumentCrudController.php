@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use App\Repository\MetadataRepository;
 
 class DocumentCrudController extends AbstractCrudController
@@ -37,6 +38,7 @@ class DocumentCrudController extends AbstractCrudController
         return $filters
             ->add('classification')
             ->add('title')
+            ->add('id')
             ->add('version')
             ->add('state')
             ->add('uri')
@@ -50,6 +52,7 @@ class DocumentCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield AssociationField::new('classification');
+        yield IdField::new('id')->hideOnForm();
         yield TextField::new('title');
         yield TextField::new('version');
         yield ChoiceField::new('state')

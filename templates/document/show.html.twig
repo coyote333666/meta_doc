@@ -3,9 +3,9 @@
 {% block title %}Document{% endblock %}
 
 {% block body %}
-    <div  class="media shadow border rounded-lg p-3 mb-4">
+<tbody>
+    <div class="media shadow border rounded-lg p-3 mb-4">
     <table class="table">
-        <tbody>
             <tr>
                 <td colspan=2><h2>
                 {% if document.uri == true %}
@@ -45,42 +45,49 @@
                 <th>Version</th>
                 <td>{{ document.version }}</td>
             </tr>
+            {% if document.metadatas|length > 0 %}
             <tr>
                 <td colspan=2><h2>Tags</h2></td>
             </tr>
+            {% endif %}
             {% for metadata in document.metadatas %}
             <tr>
                 <th>{{ metadata.getDublinCoreElement }}</th>
-                <td>{{ metadata.term }}</td>
+                <td><a href="{{ path('document_search', { q: metadata.term}) }}">
+                {{ metadata.term }}
+                </a></td>
             </tr>
             {% endfor %}
+            {% if document.documentSources|length > 0 %}
             <tr>
                 <td colspan=2><h2>Sources</h2></td>
             </tr>
-            {% for documentSource in document.documentSources %}
+            {% endif %}
+            {% for relation in document.documentSources %}
             <tr>
-                <th>{{ documentSource.getDublinCoreRelation }}</th>
-                <td><a href="{{ path('document_show', { id: documentSource.getDocumentSource.getId}) }}">
-                {{ documentSource.getDocumentSource }}
+                <th>{{ relation.getDublinCoreRelation }}</th>
+                <td><a href="{{ path('document_show', { id: relation.getDocumentTarget.getId}) }}">
+                {{ relation.getDocumentTarget }}
                 </a></td>
            </tr>
             {% endfor %}
+            {% if document.documentTargets|length > 0 %}
             <tr>
                 <td colspan=2><h2>Targets</h2></td>
             </tr>
-            {% for documentTarget in document.documentTargets %}
+            {% endif %}
+            {% for relation in document.documentTargets %}
             <tr>
-                <th>{{ documentTarget.getDublinCoreRelation }}</th>
-                <td><a href="{{ path('document_show', { id: documentTarget.getDocumentTarget.getId}) }}">
-                {{ documentTarget.getDocumentTarget }}
+                <th>{{ relation.getDublinCoreRelation }}</th>
+                <td><a href="{{ path('document_show', { id: relation.getDocumentSource.getId}) }}">
+                {{ relation.getDocumentSource }}
                 </a></td>
             </tr>
             {% endfor %}
-        </tbody>
     </table>
     </div>
-
-    <a class="btn btn-sm btn-blue stretched-link" href="{{ path('classification', {'code': code}) }}">back to list</a>
-
-
+    <div>
+        <a href="{{ path('classification', {'code': code}) }}">back to classification</a>
+    </div>
+</tbody>
 {% endblock %}

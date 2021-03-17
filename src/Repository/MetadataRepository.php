@@ -47,4 +47,30 @@ class MetadataRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Metadata[]
+     */
+    public function findBySearchQuery(string $query): array
+    {
+        $searchTerms = $this->extractSearchTerms($query);
+
+        if (0 === \count($searchTerms)) {
+            return [];
+        }
+
+        $queryBuilder = $this->createQueryBuilder('m');
+
+        foreach ($searchTerms as $key => $term) {
+            $queryBuilder
+                ->orWhere('m.term LIKE :t_'.$key)
+                ->setParameter('t_'.$key, '%'.$term.'%')
+            ;
+        }
+
+        return $queryBuilder
+            ->orderBy('m.term', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }    
 }

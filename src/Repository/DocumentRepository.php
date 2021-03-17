@@ -29,7 +29,7 @@ class DocumentRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('c')
             ->andWhere('c.classification = :classification')
             ->setParameter('classification', $classification)
-            ->orderBy('c.start_date', 'DESC')
+            ->orderBy('c.title', 'ASC')
             ->setMaxResults(self::PAGINATOR_PER_PAGE)
             ->setFirstResult($offset)
             ->getQuery()
@@ -78,16 +78,20 @@ class DocumentRepository extends ServiceEntityRepository
         }
 
         $queryBuilder = $this->createQueryBuilder('d');
+        $queryBuilder
+            ->leftJoin('d.metadatas', 'm');
 
         foreach ($searchTerms as $key => $term) {
             $queryBuilder
                 ->orWhere('d.title LIKE :t_'.$key)
+                ->orWhere('d.text LIKE :t_'.$key)
+                ->orWhere('m.term LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
             ;
         }
 
         return $queryBuilder
-            ->orderBy('d.start_date', 'DESC')
+            ->orderBy('d.title', 'ASC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();

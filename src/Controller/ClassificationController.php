@@ -63,40 +63,32 @@ class ClassificationController extends AbstractController
     }
 
     /**
-     * @Route("/posts/{id}", methods="GET", name="document_post")
-     * @ParamConverter("post", class="SensioBlogBundle:Post")
-     *
-     * NOTE: The $post controller argument is automatically injected by Symfony
-     * after performing a database query looking for a Post with the 'id'
-     * value given in the route.
-     * See https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html
-     */
-    public function postShow(Post $postDocument): Response
-    {
-        return $this->render('document/post_show.html.twig', ['post' => $postDocument]);
-    }
-
-    /**
      * @Route("/search", methods="GET", name="document_search")
      */
     public function search(Request $request, DocumentRepository $documents): Response
     {
         $query = $request->query->get('q', '');
-        $limit = $request->query->get('l', 10);
+        // $limit = $request->query->get('l', 10);
+        $limit = 10000;
         
         if (!$request->isXmlHttpRequest()) {
             return $this->render('document/search.html.twig', ['query' => $query]);
         }
         
         $foundDocuments = $documents->findBySearchQuery($query, $limit);
-        
+
         $results = [];
         foreach ($foundDocuments as $document) {
+            $details = '';
+            $details .= 'Date : ' . $document->getStartDate()->format('Y-m-d');
+            $details .= ' ; ' . 'Classification : ' . $document->getClassification();
+            foreach ($document->getMetadatas() as $meta) {
+                $details .= ' ; ' . $meta;
+            }
             $results[] = [
                 'title' => htmlspecialchars($document->getTitle(), ENT_COMPAT | ENT_HTML5),
-                'date' => $document->getStartDate()->format('Y-m-d'),
-                'summary' => htmlspecialchars($document->getText(), ENT_COMPAT | ENT_HTML5),
-                'url' => $this->generateUrl('document_post', ['id' => $document->getId()]),
+                'summary' => htmlspecialchars($details, ENT_COMPAT | ENT_HTML5),
+                'url' => $this->generateUrl('document_show', ['id' => $document->getId()]),
             ];
         }
 

@@ -15,16 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class DocumentController extends AbstractController
 {
     /**
-     * @Route("/", name="document_index", methods={"GET"})
-     */
-    public function index(DocumentRepository $documentRepository): Response
-    {
-        return $this->render('document/index.html.twig', [
-            'documents' => $documentRepository->findAll(),
-        ]);
-    }
-    
-    /**
      * @Route("/{id}", name="document_show", methods={"GET"})
      */
     public function show(Document $document): Response
