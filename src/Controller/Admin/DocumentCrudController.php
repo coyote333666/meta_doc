@@ -13,9 +13,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use App\Repository\MetadataRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DocumentCrudController extends AbstractCrudController
 {
+    private $translator;
+    
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Document::class;
@@ -23,14 +31,17 @@ class DocumentCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
+        $editing = $this->translator->trans('admin.editing');
+        $documents = $this->translator->trans('admin.documents');
+
         return $crud
             ->setEntityLabelInSingular('Document')
             ->setEntityLabelInPlural('Documents')
             ->setSearchFields(['title', 'text'])
-            ->setPageTitle('edit', fn (Document $document) => sprintf('Editing <b>%s</b>', $document->getTitle()))    
-            ->setPageTitle('index', '%entity_label_plural% listing')
-            ->setDefaultSort(['start_date' => 'DESC']);
-        ;
+            ->setPageTitle('edit', fn (Document $document) => sprintf($editing . ' : <b>%s</b>', $document->getTitle()))    
+            ->setPageTitle('index', $documents)
+            ->setDefaultSort(['classification' => 'ASC','title' => 'ASC']);
+       ;
     }    
 
     public function configureFilters(Filters $filters): Filters
@@ -41,7 +52,6 @@ class DocumentCrudController extends AbstractCrudController
             ->add('id')
             ->add('version')
             ->add('state')
-            ->add('uri')
             ->add('text')
             ->add('start_date')
             ->add('end_date')
@@ -51,14 +61,18 @@ class DocumentCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        $Creation = $this->translator->trans('state.creation');
+        $Revision = $this->translator->trans('state.revision');
+        $Active = $this->translator->trans('state.active');
+        $SemiActive = $this->translator->trans('state.semi_active');
+        $Inactive = $this->translator->trans('state.inactive');
+
         yield AssociationField::new('classification');
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('title');
         yield TextField::new('version');
         yield ChoiceField::new('state')
-        ->setChoices(['creation' => 'creation', 'revision' => 'revision', 'active' => 'active', 'semi-active' => 'semi-active', 'inactive' => 'inactive']);
-        yield TextField::new('uri')
-        ->hideOnIndex();
+        ->setChoices([$Creation => $Creation, $Revision => $Revision, $Active => $Active,  $SemiActive =>  $SemiActive, $Inactive => $Inactive]);
         yield TextEditorField::new('text')
         ->hideOnIndex();
         $start_date = DateField::new('start_date')->setFormTypeOptions([

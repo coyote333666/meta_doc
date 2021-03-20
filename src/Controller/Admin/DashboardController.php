@@ -14,9 +14,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DashboardController extends AbstractDashboardController
 {
+    private $translator;
+    
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * @Route("/admin", name="admin")
      */
@@ -36,12 +44,20 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
-        yield MenuItem::linkToCrud('Documents', 'fas fa-file', Document::class);
-        yield MenuItem::linkToCrud('Classifications', 'fas fa-tree', Classification::class);
-        yield MenuItem::linkToCrud('Document relations', 'fas fa-bezier-curve', DocumentRelation::class);
-        yield MenuItem::linkToCrud('Dublin core element', 'fas fa-key', DublinCoreElement::class);
-        yield MenuItem::linkToCrud('Dublin core relation', 'fas fa-key', DublinCoreRelation::class);
-        yield MenuItem::linkToCrud('Metadata', 'fas fa-file-code', Metadata::class);
+        $website = $this->translator->trans('admin.back_website');
+        $relations = $this->translator->trans('admin.relations');
+        $documents = $this->translator->trans('admin.documents');
+        $classifications = $this->translator->trans('admin.classifications');
+        $dublinElements = $this->translator->trans('admin.dublinElements');
+        $dublinRelations = $this->translator->trans('admin.dublinRelations');
+        $metadatas = $this->translator->trans('admin.metadatas');
+
+        yield MenuItem::linktoRoute($website, 'fas fa-home', 'homepage');
+        yield MenuItem::linkToCrud($documents, 'fas fa-file', Document::class);
+        yield MenuItem::linkToCrud($classifications, 'fas fa-tree', Classification::class);
+        yield MenuItem::linkToCrud($relations, 'fas fa-bezier-curve', DocumentRelation::class);
+        yield MenuItem::linkToCrud($dublinElements, 'fas fa-key', DublinCoreElement::class);
+        yield MenuItem::linkToCrud($dublinRelations, 'fas fa-key', DublinCoreRelation::class);
+        yield MenuItem::linkToCrud($metadatas, 'fas fa-file-code', Metadata::class);
     }
 }

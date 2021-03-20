@@ -4,7 +4,7 @@
 
 {% block body %}
     <h2 class="mb-5">
-        Index of classifications
+        {{ 'classification.title'|trans }}
     </h2>
 
     {% for row in classifications|batch(4) %}
@@ -24,7 +24,7 @@
 
                             <a href="{{ path('classification', { code: classification.code }) }}"
                                class="btn btn-sm btn-blue stretched-link">
-                                View
+                               {{ 'label.view'|trans }}
                             </a>
                         </div>
                     </div>

@@ -6,8 +6,8 @@ use App\Repository\DocumentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
@@ -50,14 +50,8 @@ class Document
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Choice(callback="getStates")
      */
     private $state;
-
-    /**
-     * @ORM\Column(type="string", length=4000, nullable=true)
-     */
-    private $uri;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
@@ -85,14 +79,15 @@ class Document
      */
     #[Assert\NotBlank]
     private $classification;
+    private $translator;
 
-
-    public function __construct()
+    public function __construct(TranslatorInterface $translator)
     {
         $this->metadatas = new ArrayCollection();
         $this->documentSources = new ArrayCollection();
         $this->documentTargets = new ArrayCollection();
         $this->start_date = new \DateTime();
+        $this->translator = $translator;
     }
 
     public function __toString(): string
@@ -161,18 +156,6 @@ class Document
     public function setState(?string $state): self
     {
         $this->state = $state;
-
-        return $this;
-    }
-
-    public function getUri(): ?string
-    {
-        return $this->uri;
-    }
-
-    public function setUri(?string $uri): self
-    {
-        $this->uri = $uri;
 
         return $this;
     }
@@ -291,10 +274,5 @@ class Document
     public function setStartDateValue()
     {
         $this->start_date = new \DateTime();
-    }
-
-    public static function getStates()
-    {
-        return ['creation', 'revision', 'active', 'semi-active', 'inactive'];
     }
 }

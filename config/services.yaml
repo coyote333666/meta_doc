@@ -4,6 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    locale: 'fr'
+    # This parameter defines the codes of the locales (languages) enabled in the application
+    app_locales: ar|en|fr|de|es|ru|it|ja|zh
+    app.notifications.email_sender: anonymous@example.com
 
 services:
     # default configuration for services in *this* file

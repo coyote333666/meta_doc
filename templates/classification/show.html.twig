@@ -25,16 +25,18 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div>There are {{ documents|length }} documents.</div>
+
+                
+                <div>{{ 'document.count'|trans({ '%count%': documents|length }) }}</div>
                 {% if previous >= 0 %}
-                    <a href="{{ path('classification', { code: classification.code, offset: previous }) }}">Previous</a>
+                    <a href="{{ path('classification', { code: classification.code, offset: previous }) }}">{{ 'paginator.previous'|trans }}</a>
                 {% endif %}
                 {% if next < documents|length %}
-                    <a href="{{ path('classification', { code: classification.code, offset: next }) }}">Next</a>
+                    <a href="{{ path('classification', { code: classification.code, offset: next }) }}">{{ 'paginator.next'|trans }}</a>
                 {% endif %}
             {% else %}
                 <div class="text-center">
-                    No documents have been posted yet for this classification.
+                    {{ 'document.no_documents_found'|trans }}
                 </div>
             {% endif %}
         </div>

@@ -1,6 +1,60 @@
 easy_admin:
     entities:
+        Classification:
+            label: admin.classifications
+            class: App\Entity\Classification
+            list:
+                fields:
+                    - { property: 'code', label: 'label.code' }
+                    - { property: 'title', label: 'label.title' }
+                    - { property: 'description', label: 'label.description' }
+        Document:
+            label: admin.documents
+            class: App\Entity\Document
+            list:
+                fields:
+                    - { property: 'classification', label: 'admin.classification' }
+                    - { property: 'id', label: 'label.id' }
+                    - { property: 'title', label: 'label.title' }
+                    - { property: 'version', label: 'label.version' }
+                    - { property: 'state', label: 'label.state' }
+                    - { property: 'text', label: 'label.text' }
+                    - { property: 'start_date', label: 'label.start_date' }
+                    - { property: 'end_date', label: 'label.end_date' }
+                    - { property: 'metadatas', label: 'admin.metadatas' }
+        DocumentRelation:
+            label: admin.relations
+            class: App\Entity\DocumentRelation
+            list:
+                fields:
+                    - { property: 'dublin_core_relation', label: 'admin.dublinRelations' }
+                    - { property: 'document_source', label: 'label.sources' }
+                    - { property: 'document_target', label: 'label.targets' }
+        DublinCoreElement:
+            label: admin.dublinElements
+            class: App\Entity\DublinCoreElement
+            list:
+                fields:
+                    - { property: 'element', label: 'admin.dublinElements' }
+                    - { property: 'definition', label: 'label.definition' }
+        DublinCoreRelation:
+            label: admin.dublinRelations
+            class: App\Entity\DublinCoreRelation
+            list:
+                fields:
+                    - { property: 'relation', label: 'admin.dublinRelations' }
+                    - { property: 'definition', label: 'label.definition' }
+        Metadata:
+            label: admin.metadatas
+            class: App\Entity\Metadata
+            list:
+                fields:
+                    - { property: 'term', label: 'label.term' }
+                    - { property: 'dublin_core_element', label: 'admin.dublinElements' }
+                    - { property: 'description', label: 'label.description' }
     design:
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
+        
+
         

@@ -14,13 +14,13 @@
     <body>
         <header class="header">
             <h1 class="sr-only">
-                Meta_doc : metadatas for documents
+                Meta_doc : {{ 'app.name'|trans }}
             </h1>
 
             <nav class="navbar navbar-expand-xl navbar-light bg-light">
                 <div class="container mt-4 mb-3">
                     <a class="navbar-brand mr-4 pr-2" href="{{ path('homepage') }}">
-                        &#128217; Meta_doc : metadatas for documents
+                        &#128217; Meta_doc : {{ 'app.name'|trans }}
                     </a>
 
                     <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#header-menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Show/Hide navigation">
@@ -31,15 +31,15 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item mr-3">
                                 <a class="nav-link" href="{{ path('admin') }}">
-                                    Admin
+                                    {{ 'menu.admin'|trans }}
                                 </a>
                             </li>
-                            <li>
+                            <li class="nav-item mr-3">
                                 <a class="nav-link" href="{{ path('document_search') }}">
-                                    Search
+                                    {{ 'menu.search'|trans }}
                                 </a>
                             </li>
-                        </ul>
+                       </ul>
                     </div>
                 </div>
             </nav>
@@ -57,8 +57,10 @@
 
         <footer class="mt-7 px-3 py-5 text-center text-muted">
             <p>
-                <a href="#" class="text-white">Back to top</a>
+                <a href="#" class="text-white">{{ 'redirection.top'|trans }}</a>
             </p>
+                <p>&copy; {{ 'now'|date('Y') }} - Vincent Fortier - 
+                {{ 'mit_license'|trans }}</p>
         </footer>
 
         {% block javascripts %}

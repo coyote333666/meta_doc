@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mit_license">
+                <source>mit_license</source>
+                <target>ترخيص MIT</target>
+            </trans-unit>
+            <trans-unit id="classification.title">
+                <source>classification.title</source>
+                <target>فهرس التصنيفات</target>
+            </trans-unit>
+            <trans-unit id="document.count">
+                <source>document.count</source>
+                <target>يوجد { count ، رقم } وثيقة (وثائق).</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>مشاهدة</target>
+            </trans-unit>
+            <trans-unit id="paginator.previous">
+                <source>paginator.previous</source>
+                <target>سابق</target>
+            </trans-unit>
+            <trans-unit id="paginator.next">
+                <source>paginator.next</source>
+                <target>تالي</target>
+            </trans-unit>
+            <trans-unit id="document.no_documents_found">
+                <source>document.no_documents_found</source>
+                <target>لم يتم ايجاد وثائق..</target>
+            </trans-unit>
+            <trans-unit id="label.text">
+                <source>label.text</source>
+                <target>النص</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>العنوان</target>
+            </trans-unit>
+            <trans-unit id="label.start_date">
+                <source>label.start_date</source>
+                <target>تاريخ البدء</target>
+            </trans-unit>
+            <trans-unit id="label.end_date">
+                <source>label.end_date</source>
+                <target>تاريخ الانتهاء</target>
+            </trans-unit>
+            <trans-unit id="label.state">
+                <source>label.state</source>
+                <target>الحالة</target>
+            </trans-unit>
+            <trans-unit id="label.version">
+                <source>label.version</source>
+                <target>النسخة</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Metadataتز</target>
+            </trans-unit>
+            <trans-unit id="label.sources">
+                <source>label.sources</source>
+                <target>المصادر</target>
+            </trans-unit>
+            <trans-unit id="label.targets">
+                <source>label.targets</source>
+                <target>الأهداف</target>
+            </trans-unit>
+            <trans-unit id="classification.redirection">
+                <source>classification.redirection</source>
+                <target>عودة الى التصنيف</target>
+            </trans-unit>
+            <trans-unit id="app.name">
+                <source>app.name</source>
+                <target>Metadatas and documents</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>اداري</target>
+            </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>بحث</target>
+            </trans-unit>
+            <trans-unit id="redirection.top">
+                <source>redirection.top</source>
+                <target>العودة الى أعلى</target>
+            </trans-unit>
+            <trans-unit id="admin.back_website">
+                <source>admin.back_website</source>
+                <target>العودة إلى الموقع</target>
+            </trans-unit>
+            <trans-unit id="admin.relations">
+                <source>admin.relations</source>
+                <target>العلاقات الوثيقة</target>
+            </trans-unit>
+            <trans-unit id="search.for">
+                <source>search.for</source>
+                <target>بحث عن</target>
+            </trans-unit>
+            <trans-unit id="state.creation">
+                <source>state.creation</source>
+                <target>التكوين</target>
+            </trans-unit>
+            <trans-unit id="state.revision">
+                <source>state.revision</source>
+                <target>المراجعة</target>
+            </trans-unit>
+            <trans-unit id="state.active">
+                <source>state.active</source>
+                <target>فعال</target>
+            </trans-unit>
+            <trans-unit id="state.semi_active">
+                <source>state.semi_active</source>
+                <target>نصف فعال</target>
+            </trans-unit>
+            <trans-unit id="state.inactive">
+                <source>state.inactive</source>
+                <target>غير فعال</target>
+            </trans-unit>
+            <trans-unit id="admin.documents">
+                <source>admin.documents</source>
+                <target>الوثائق</target>
+            </trans-unit>
+            <trans-unit id="admin.classifications">
+                <source>admin.classifications</source>
+                <target>التصنيفات</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinElem">
+                <source>admin.dublinElem</source>
+                <target>عنصر دبلن الأساسي</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinRela">
+                <source>admin.dublinRela</source>
+                <target>علاقة دبلن الأساسية</target>
+            </trans-unit>
+            <trans-unit id="admin.metadata">
+                <source>admin.metadata</source>
+                <target>Metadataتز</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -9,24 +9,31 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class MetadataCrudController extends AbstractCrudController
 {
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Metadata::class;
     }
 
-
-
     public function configureCrud(Crud $crud): Crud
     {
+        $editing = $this->translator->trans('admin.editing');
+        $metadatas = $this->translator->trans('admin.metadatas');
+
         return $crud
             ->setEntityLabelInSingular('Metadata')
             ->setEntityLabelInPlural('Metadatas')
             ->setSearchFields(['term', 'description'])
-            ->setPageTitle('edit', fn (Metadata $metadata) => sprintf('Editing <b>%s</b>', $metadata->getTerm()))    
-            ->setPageTitle('index', '%entity_label_plural% listing')
+            ->setPageTitle('edit', fn (Metadata $metadata) => sprintf($editing . ' : <b>%s</b>', $metadata->getTerm()))    
+            ->setPageTitle('index', $metadatas)
             ->setDefaultSort(['term' => 'ASC','dublin_core_element' => 'ASC']);
         ;
     }

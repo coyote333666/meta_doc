@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mit_license">
+                <source>mit_license</source>
+                <target>MIT License</target>
+            </trans-unit>
+            <trans-unit id="classification.title">
+                <source>classification.title</source>
+                <target>Index of classifications</target>
+            </trans-unit>
+            <trans-unit id="document.count">
+                <source>document.count</source>
+                <target>There are {count, number} document(s).</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="paginator.previous">
+                <source>paginator.previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="paginator.next">
+                <source>paginator.next</source>
+                <target>Next</target>
+            </trans-unit>
+            <trans-unit id="document.no_documents_found">
+                <source>document.no_documents_found</source>
+                <target>No documents found.</target>
+            </trans-unit>
+            <trans-unit id="label.text">
+                <source>label.text</source>
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="label.start_date">
+                <source>label.start_date</source>
+                <target>Start date</target>
+            </trans-unit>
+            <trans-unit id="label.end_date">
+                <source>label.end_date</source>
+                <target>End date</target>
+            </trans-unit>
+            <trans-unit id="label.state">
+                <source>label.state</source>
+                <target>State</target>
+            </trans-unit>
+            <trans-unit id="label.version">
+                <source>label.version</source>
+                <target>Version</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Metadatas</target>
+            </trans-unit>
+            <trans-unit id="label.sources">
+                <source>label.sources</source>
+                <target>Sources</target>
+            </trans-unit>
+            <trans-unit id="label.targets">
+                <source>label.targets</source>
+                <target>Targets</target>
+            </trans-unit>
+            <trans-unit id="classification.redirection">
+                <source>classification.redirection</source>
+                <target>Back to classification</target>
+            </trans-unit>
+            <trans-unit id="app.name">
+                <source>app.name</source>
+                <target>Metadatas and documents</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>Search</target>
+            </trans-unit>
+            <trans-unit id="redirection.top">
+                <source>redirection.top</source>
+                <target>Back to top</target>
+            </trans-unit>
+            <trans-unit id="admin.back_website">
+                <source>admin.back_website</source>
+                <target>Back to the website</target>
+            </trans-unit>
+            <trans-unit id="admin.relations">
+                <source>admin.relations</source>
+                <target>Document relations</target>
+            </trans-unit>
+            <trans-unit id="search.for">
+                <source>search.for</source>
+                <target>Search for</target>
+            </trans-unit>
+            <trans-unit id="state.creation">
+                <source>state.creation</source>
+                <target>Creation</target>
+            </trans-unit>
+            <trans-unit id="state.revision">
+                <source>state.revision</source>
+                <target>Revision</target>
+            </trans-unit>
+            <trans-unit id="state.active">
+                <source>state.active</source>
+                <target>Active</target>
+            </trans-unit>
+            <trans-unit id="state.semi_active">
+                <source>state.semi_active</source>
+                <target>Semi active</target>
+            </trans-unit>
+            <trans-unit id="state.inactive">
+                <source>state.inactive</source>
+                <target>Inactive</target>
+            </trans-unit>
+            <trans-unit id="admin.documents">
+                <source>admin.documents</source>
+                <target>Documents</target>
+            </trans-unit>
+            <trans-unit id="admin.classifications">
+                <source>admin.classifications</source>
+                <target>Classifications</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>Dublin core elements</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>Dublin core relations</target>
+            </trans-unit>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
+                <target>Metadatas</target>
+            </trans-unit>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>Editing</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>Document relations</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>Definition</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>Term</target>
+            </trans-unit>
+       </body>
+    </file>
+</xliff>

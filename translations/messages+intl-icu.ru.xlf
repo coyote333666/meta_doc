@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mit_license">
+                <source>mit_license</source>
+                <target>Лицензия MIT</target>
+            </trans-unit>
+            <trans-unit id="classification.title">
+                <source>classification.title</source>
+                <target>Индекс классификаций</target>
+            </trans-unit>
+            <trans-unit id="document.count">
+                <source>document.count</source>
+                <target>Есть { count, number } документов.</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>Вид</target>
+            </trans-unit>
+            <trans-unit id="paginator.previous">
+                <source>paginator.previous</source>
+                <target>Предыдущая</target>
+            </trans-unit>
+            <trans-unit id="paginator.next">
+                <source>paginator.next</source>
+                <target>Далее</target>
+            </trans-unit>
+            <trans-unit id="document.no_documents_found">
+                <source>document.no_documents_found</source>
+                <target>Документы не найдены.</target>
+            </trans-unit>
+            <trans-unit id="label.text">
+                <source>label.text</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="label.start_date">
+                <source>label.start_date</source>
+                <target>Начальная дата</target>
+            </trans-unit>
+            <trans-unit id="label.end_date">
+                <source>label.end_date</source>
+                <target>Дата окончания</target>
+            </trans-unit>
+            <trans-unit id="label.state">
+                <source>label.state</source>
+                <target>Государство</target>
+            </trans-unit>
+            <trans-unit id="label.version">
+                <source>label.version</source>
+                <target>Версия</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Метаданные</target>
+            </trans-unit>
+            <trans-unit id="label.sources">
+                <source>label.sources</source>
+                <target>Источники</target>
+            </trans-unit>
+            <trans-unit id="label.targets">
+                <source>label.targets</source>
+                <target>Целевые объекты</target>
+            </trans-unit>
+            <trans-unit id="classification.redirection">
+                <source>classification.redirection</source>
+                <target>Вернуться к классификации</target>
+            </trans-unit>
+            <trans-unit id="app.name">
+                <source>app.name</source>
+                <target>Метаданные и документы</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>Администратор</target>
+            </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>Поиск</target>
+            </trans-unit>
+            <trans-unit id="redirection.top">
+                <source>redirection.top</source>
+                <target>Назад к вершине</target>
+            </trans-unit>
+            <trans-unit id="admin.back_website">
+                <source>admin.back_website</source>
+                <target>Вернуться на веб-сайт</target>
+            </trans-unit>
+            <trans-unit id="admin.relations">
+                <source>admin.relations</source>
+                <target>Отношения с документами</target>
+            </trans-unit>
+            <trans-unit id="search.for">
+                <source>search.for</source>
+                <target>Поиск</target>
+            </trans-unit>
+            <trans-unit id="state.creation">
+                <source>state.creation</source>
+                <target>Создание</target>
+            </trans-unit>
+            <trans-unit id="state.revision">
+                <source>state.revision</source>
+                <target>Модификация</target>
+            </trans-unit>
+            <trans-unit id="state.active">
+                <source>state.active</source>
+                <target>Активно</target>
+            </trans-unit>
+            <trans-unit id="state.semi_active">
+                <source>state.semi_active</source>
+                <target>Полуактивное</target>
+            </trans-unit>
+            <trans-unit id="state.inactive">
+                <source>state.inactive</source>
+                <target>Неактивно</target>
+            </trans-unit>
+            <trans-unit id="admin.documents">
+                <source>admin.documents</source>
+                <target>Документы</target>
+            </trans-unit>
+            <trans-unit id="admin.classifications">
+                <source>admin.classifications</source>
+                <target>Классификации</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinElem">
+                <source>admin.dublinElem</source>
+                <target>Дублинский основной элемент</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinRela">
+                <source>admin.dublinRela</source>
+                <target>Дублинское основное соотношение</target>
+            </trans-unit>
+            <trans-unit id="admin.metadata">
+                <source>admin.metadata</source>
+                <target>Метаданные</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

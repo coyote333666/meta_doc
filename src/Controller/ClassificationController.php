@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Classification;
-use App\Entity\Document;
 use App\Repository\DocumentRepository;
 use App\Repository\ClassificationRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Twig\Environment;
 
 class ClassificationController extends AbstractController
@@ -24,7 +22,7 @@ class ClassificationController extends AbstractController
         $this->twig = $twig;
         $this->entityManager = $entityManager;
     }
-    
+
     /**
      * @Route("/", name="homepage")
      */
@@ -50,7 +48,6 @@ class ClassificationController extends AbstractController
      */
     public function show(Request $request, Classification $classification, DocumentRepository $documentRepository): Response
     {
-
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $documentRepository->getDocumentPaginator($classification, $offset);
            
@@ -68,8 +65,7 @@ class ClassificationController extends AbstractController
     public function search(Request $request, DocumentRepository $documents): Response
     {
         $query = $request->query->get('q', '');
-        // $limit = $request->query->get('l', 10);
-        $limit = 10000;
+        $limit = $request->query->get('l', 50);
         
         if (!$request->isXmlHttpRequest()) {
             return $this->render('document/search.html.twig', ['query' => $query]);

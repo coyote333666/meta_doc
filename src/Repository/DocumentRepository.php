@@ -79,12 +79,15 @@ class DocumentRepository extends ServiceEntityRepository
 
         $queryBuilder = $this->createQueryBuilder('d');
         $queryBuilder
-            ->leftJoin('d.metadatas', 'm');
+            ->leftJoin('d.metadatas', 'm')
+            ->leftJoin('d.classification', 'c');
 
         foreach ($searchTerms as $key => $term) {
             $queryBuilder
                 ->orWhere('d.title LIKE :t_'.$key)
                 ->orWhere('d.text LIKE :t_'.$key)
+                ->orWhere('c.code LIKE :t_'.$key)
+                ->orWhere('c.title LIKE :t_'.$key)
                 ->orWhere('m.term LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
             ;

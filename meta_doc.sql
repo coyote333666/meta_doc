@@ -63,18 +63,6 @@ CREATE TABLE public.classification (
 ALTER TABLE public.classification OWNER TO main;
 
 --
--- Name: classification_admin; Type: TABLE; Schema: public; Owner: main
---
-
-CREATE TABLE public.classification_admin (
-    classification_id integer NOT NULL,
-    admin_id integer NOT NULL
-);
-
-
-ALTER TABLE public.classification_admin OWNER TO main;
-
---
 -- Name: classification_id_seq; Type: SEQUENCE; Schema: public; Owner: main
 --
 
@@ -107,47 +95,17 @@ ALTER TABLE public.doctrine_migration_versions OWNER TO main;
 
 CREATE TABLE public.document (
     id integer NOT NULL,
-    slug character varying(500) DEFAULT NULL::character varying NOT NULL,
     text text,
     title character varying(255) NOT NULL,
     start_date date NOT NULL,
     end_date date,
     state character varying(255) DEFAULT NULL::character varying,
-    uri character varying(4000) DEFAULT NULL::character varying,
     version character varying(20) DEFAULT NULL::character varying,
     classification_id integer NOT NULL
 );
 
 
 ALTER TABLE public.document OWNER TO main;
-
---
--- Name: document_document; Type: TABLE; Schema: public; Owner: main
---
-
-CREATE TABLE public.document_document (
-    id integer NOT NULL,
-    dublin_core_id integer,
-    document_source_id integer NOT NULL,
-    document_target_id integer NOT NULL
-);
-
-
-ALTER TABLE public.document_document OWNER TO main;
-
---
--- Name: document_document_id_seq; Type: SEQUENCE; Schema: public; Owner: main
---
-
-CREATE SEQUENCE public.document_document_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.document_document_id_seq OWNER TO main;
 
 --
 -- Name: document_id_seq; Type: SEQUENCE; Schema: public; Owner: main
@@ -176,24 +134,24 @@ CREATE TABLE public.document_metadata (
 ALTER TABLE public.document_metadata OWNER TO main;
 
 --
--- Name: dublin_core; Type: TABLE; Schema: public; Owner: main
+-- Name: document_relation; Type: TABLE; Schema: public; Owner: main
 --
 
-CREATE TABLE public.dublin_core (
+CREATE TABLE public.document_relation (
     id integer NOT NULL,
-    element character varying(50) NOT NULL,
-    is_related boolean NOT NULL,
-    definition character varying(4000) DEFAULT NULL::character varying
+    dublin_core_relation_id integer,
+    document_source_id integer NOT NULL,
+    document_target_id integer NOT NULL
 );
 
 
-ALTER TABLE public.dublin_core OWNER TO main;
+ALTER TABLE public.document_relation OWNER TO main;
 
 --
--- Name: dublin_core_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+-- Name: document_relation_id_seq; Type: SEQUENCE; Schema: public; Owner: main
 --
 
-CREATE SEQUENCE public.dublin_core_id_seq
+CREATE SEQUENCE public.document_relation_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -201,7 +159,61 @@ CREATE SEQUENCE public.dublin_core_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.dublin_core_id_seq OWNER TO main;
+ALTER TABLE public.document_relation_id_seq OWNER TO main;
+
+--
+-- Name: dublin_core_element; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.dublin_core_element (
+    id integer NOT NULL,
+    element character varying(50) NOT NULL,
+    definition character varying(4000) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.dublin_core_element OWNER TO main;
+
+--
+-- Name: dublin_core_element_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.dublin_core_element_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dublin_core_element_id_seq OWNER TO main;
+
+--
+-- Name: dublin_core_relation; Type: TABLE; Schema: public; Owner: main
+--
+
+CREATE TABLE public.dublin_core_relation (
+    id integer NOT NULL,
+    relation character varying(50) NOT NULL,
+    definition character varying(4000) DEFAULT NULL::character varying
+);
+
+
+ALTER TABLE public.dublin_core_relation OWNER TO main;
+
+--
+-- Name: dublin_core_relation_id_seq; Type: SEQUENCE; Schema: public; Owner: main
+--
+
+CREATE SEQUENCE public.dublin_core_relation_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.dublin_core_relation_id_seq OWNER TO main;
 
 --
 -- Name: metadata; Type: TABLE; Schema: public; Owner: main
@@ -209,25 +221,13 @@ ALTER TABLE public.dublin_core_id_seq OWNER TO main;
 
 CREATE TABLE public.metadata (
     id integer NOT NULL,
-    code character varying(50) NOT NULL,
+    term character varying(50) NOT NULL,
     description character varying(4000) DEFAULT NULL::character varying,
-    dublin_core_id integer
+    dublin_core_element_id integer
 );
 
 
 ALTER TABLE public.metadata OWNER TO main;
-
---
--- Name: metadata_classification; Type: TABLE; Schema: public; Owner: main
---
-
-CREATE TABLE public.metadata_classification (
-    metadata_id integer NOT NULL,
-    classification_id integer NOT NULL
-);
-
-
-ALTER TABLE public.metadata_classification OWNER TO main;
 
 --
 -- Name: metadata_id_seq; Type: SEQUENCE; Schema: public; Owner: main
@@ -257,16 +257,9 @@ COPY public.admin (id, username, roles, password) FROM stdin;
 --
 
 COPY public.classification (id, code, description, title) FROM stdin;
-2	00001	Premier noeud	Classification test premier noeud
-1	00000	Noeud racine home.	Home
-\.
-
-
---
--- Data for Name: classification_admin; Type: TABLE DATA; Schema: public; Owner: main
---
-
-COPY public.classification_admin (classification_id, admin_id) FROM stdin;
+5	00003	<div>test 00003</div>	test 00003
+2	00001	<div>Premier noeud</div>	Classification test premier noeud
+1	00000	<div>Noeud racine home.</div>	Home
 \.
 
 
@@ -330,6 +323,32 @@ DoctrineMigrations\\Version20210302163807	\N	\N
 DoctrineMigrations\\Version20210302164225	2021-03-02 11:43:10	32
 DoctrineMigrations\\Version20210302164651	2021-03-02 11:47:09	24
 DoctrineMigrations\\Version20210302184354	2021-03-02 13:43:59	10
+DoctrineMigrations\\Version20210302212838	2021-03-02 16:30:18	10
+DoctrineMigrations\\Version20210302213211	2021-03-02 16:32:31	32
+DoctrineMigrations\\Version20210302213600	2021-03-02 16:36:23	12
+DoctrineMigrations\\Version20210302223549	2021-03-02 17:36:17	30
+DoctrineMigrations\\Version20210303190146	2021-03-03 14:02:45	56
+DoctrineMigrations\\Version20210303190451	2021-03-03 14:08:53	11
+DoctrineMigrations\\Version20210303194251	2021-03-03 14:52:11	53
+DoctrineMigrations\\Version20210303205503	2021-03-03 22:59:49	10
+DoctrineMigrations\\Version20210304035920	2021-03-03 22:59:49	0
+DoctrineMigrations\\Version20210304040221	2021-03-03 23:02:45	76
+DoctrineMigrations\\Version20210304141711	2021-03-04 09:17:31	11
+DoctrineMigrations\\Version20210304141851	\N	\N
+DoctrineMigrations\\Version20210304142330	\N	\N
+DoctrineMigrations\\Version20210304142541	\N	\N
+DoctrineMigrations\\Version20210304143223	\N	\N
+DoctrineMigrations\\Version20210304143623	2021-03-04 09:38:45	33
+DoctrineMigrations\\Version20210304144534	2021-03-04 09:47:37	33
+DoctrineMigrations\\Version20210304161728	2021-03-04 11:17:57	10
+DoctrineMigrations\\Version20210306170327	\N	\N
+DoctrineMigrations\\Version20210306172510	2021-03-06 12:26:28	50
+DoctrineMigrations\\Version20210308180312	2021-03-08 13:03:35	29
+DoctrineMigrations\\Version20210308182206	2021-03-08 13:22:11	29
+DoctrineMigrations\\Version20210308190325	2021-03-08 14:03:30	29
+DoctrineMigrations\\Version20210315182640	2021-03-15 14:26:56	17
+DoctrineMigrations\\Version20210318012403	2021-03-17 21:24:39	9
+DoctrineMigrations\\Version20210318012540	2021-03-17 21:25:57	31
 \.
 
 
@@ -337,22 +356,24 @@ DoctrineMigrations\\Version20210302184354	2021-03-02 13:43:59	10
 -- Data for Name: document; Type: TABLE DATA; Schema: public; Owner: main
 --
 
-COPY public.document (id, slug, text, title, start_date, end_date, state, uri, version, classification_id) FROM stdin;
-2	doc-cla-00001-test-2-2021-02-12	doc cla 00001 text test text test tess test long tès long	doc cla 00001 test 2	2021-02-12	\N	\N	\N	\N	2
-1	1	doc cla 00000\r\ntest_commentaire	doc cla 000000	2021-02-10	\N	en travail	\N	\N	1
-3	test-2021-02-16	test	test	2021-02-16	\N	\N	\N	\N	1
-4	vf-test-2021-02-16	test 346	vf test	2021-02-16	2018-02-03	en cours	\N	\N	1
-6	vf-test-3-2021-02-16	test 346	vf test 3	2021-02-16	2018-02-03	en cours	\N	\N	1
-7	test-4-2021-02-16	test 4	test 4	2021-02-16	\N	\N	\N	\N	1
-9	test-5-2021-02-16	test 5	test 5	2021-02-16	\N	\N	\N	\N	1
-\.
-
-
---
--- Data for Name: document_document; Type: TABLE DATA; Schema: public; Owner: main
---
-
-COPY public.document_document (id, dublin_core_id, document_source_id, document_target_id) FROM stdin;
+COPY public.document (id, text, title, start_date, end_date, state, version, classification_id) FROM stdin;
+2	doc cla 00001 text test text test tess test long tès long	doc cla 00001 test 2	2021-02-12	\N	\N	\N	2
+9	test 5	test 5	2021-02-16	\N	\N	\N	1
+6	<div>test 346</div>	vf test 3	2021-02-16	2018-02-03	en cours	\N	1
+7	<div>test 4</div>	test 4	2021-02-16	\N	\N	\N	1
+10	\N	test34	2021-03-04	\N	\N	\N	2
+11	<div><strong>test</strong></div>	test55	2021-03-05	\N	creation	\N	2
+12	<div>test</div>	test 56	2021-03-05	\N	creation	\N	1
+13	<div>test</div>	test 12353	2021-03-05	\N	creation	\N	1
+14	test 2	vini test	2021-03-09	2016-01-01	\N	\N	1
+15	TEST	testVINCENT	2021-03-09	2016-01-01	\N	\N	1
+16	\N	test vini 333	2021-03-09	2016-01-01	\N	\N	1
+17	\N	testultimevini	2021-03-09	2016-01-01	\N	\N	2
+18	\N	testvini5	2021-03-10	2016-01-01	\N	\N	1
+20	<p>test</p>\r\n\r\n<p><strong>test<em>&nbsp;en italique&nbsp;</em></strong></p>\r\n\r\n<ul>\r\n\t<li><strong><em>points de forme</em></strong></li>\r\n</ul>	test ckeditor	2021-03-12	\N	\N	\N	1
+4	<div>test 346<strong>cece<br></strong><br></div>	vf test	2021-02-16	2018-02-03	\N	\N	1
+19	<div>testVF2036</div>	test2036	2021-03-12	2016-01-01	\N	\N	1
+3	<div>test</div>	test	2021-02-16	\N	state.creation	\N	1
 \.
 
 
@@ -361,39 +382,73 @@ COPY public.document_document (id, dublin_core_id, document_source_id, document_
 --
 
 COPY public.document_metadata (document_id, metadata_id) FROM stdin;
+12	4
+12	5
+13	4
+13	5
+14	5
+15	4
+16	5
+17	4
+18	8
+18	7
+20	8
+20	5
+3	4
+3	8
 \.
 
 
 --
--- Data for Name: dublin_core; Type: TABLE DATA; Schema: public; Owner: main
+-- Data for Name: document_relation; Type: TABLE DATA; Schema: public; Owner: main
 --
 
-COPY public.dublin_core (id, element, is_related, definition) FROM stdin;
-1	Title	f	<div>A name given to the resource</div>
-2	Subject	f	<div><br>The topic of the resource.</div>
-3	Description	f	An account of the resource.
-4	Creator	f	An entity primarily responsible for making the resource.
-5	Publisher	f	An entity responsible for making the resource available.
-6	Contributor	f	An entity responsible for making contributions to the resource.
-7	Date	f	A point or period of time associated with an event in the lifecycle of the resource.
-8	Type	f	The nature or genre of the resource.
-9	Format	f	The file format, physical medium, or dimensions of the resource.
-10	Identifier	f	An unambiguous reference to the resource within a given context.
-11	Source	f	A related resource from which the described resource is derived.
-12	Language	f	A language of the resource.
-13	Relation	f	A related resource.
-14	Coverage	f	The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.
-15	Rights	f	Information about rights held in and over the resource.
-19	isReplacedBy	t	A related resource that supplants, displaces, or supersedes the described resource.
-16	isFormatOf	t	A pre-existing related resource that is substantially the same as the described resource, but in another format.
-17	isPartOf	t	A related resource in which the described resource is physically or logically included.
-18	isReferencedBy	t	A related resource that references, cites, or otherwise points to the described resource.
-20	isRequiredBy	t	A related resource that requires the described resource to support its function, delivery, or coherence.
-21	issued	t	Date of formal issuance of the resource.
-22	isVersionOf	t	A related resource of which the described resource is a version, edition, or adaptation.
-23	hasFormat	t	A related resource that is substantially the same as the pre-existing described resource, but in another format.
-24	hasPart	t	A related resource that is included either physically or logically in the described resource.
-25	hasVersion	t	A related resource that is a version, edition, or adaptation of the described resource.
+COPY public.document_relation (id, dublin_core_relation_id, document_source_id, document_target_id) FROM stdin;
+3	5	9	6
+4	2	19	7
+5	4	3	19
+6	2	6	3
+\.
+
+
+--
+-- Data for Name: dublin_core_element; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.dublin_core_element (id, element, definition) FROM stdin;
+1	Title	A name given to the resource.
+2	Subject	The topic of the resource.
+3	Description	An account of the resource.
+4	Creator	An entity primarily responsible for making the resource.
+5	Publisher	An entity responsible for making the resource available.
+6	Contributor	An entity responsible for making contributions to the resource.
+7	Date	A point or period of time associated with an event in the lifecycle of the resource.
+8	Type	The nature or genre of the resource.
+9	Format	The file format, physical medium, or dimensions of the resource.
+10	Identifier	An unambiguous reference to the resource within a given context.
+11	Source	A related resource from which the described resource is derived.
+12	Language	A language of the resource.
+13	Relation	A related resource.
+14	Coverage	The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.
+15	Rights	Information about rights held in and over the resource.
+16	issued	Date of formal issuance of the resource.
+\.
+
+
+--
+-- Data for Name: dublin_core_relation; Type: TABLE DATA; Schema: public; Owner: main
+--
+
+COPY public.dublin_core_relation (id, relation, definition) FROM stdin;
+1	isReplacedBy	A related resource that supplants, displaces, or supersedes the described resource.
+2	isFormatOf	A pre-existing related resource that is substantially the same as the described resource, but in another format.
+3	isPartOf	A related resource in which the described resource is physically or logically included.
+4	isReferencedBy	A related resource that references, cites, or otherwise points to the described resource.
+5	isRequiredBy	A related resource that requires the described resource to support its function, delivery, or coherence.
+7	isVersionOf	A related resource of which the described resource is a version, edition, or adaptation.
+8	hasFormat	A related resource that is substantially the same as the pre-existing described resource, but in another format.
+9	hasPart	A related resource that is included either physically or logically in the described resource.
+10	hasVersion	A related resource that is a version, edition, or adaptation of the described resource.
 \.
 
 
@@ -401,15 +456,13 @@ COPY public.dublin_core (id, element, is_related, definition) FROM stdin;
 -- Data for Name: metadata; Type: TABLE DATA; Schema: public; Owner: main
 --
 
-COPY public.metadata (id, code, description, dublin_core_id) FROM stdin;
-\.
-
-
---
--- Data for Name: metadata_classification; Type: TABLE DATA; Schema: public; Owner: main
---
-
-COPY public.metadata_classification (metadata_id, classification_id) FROM stdin;
+COPY public.metadata (id, term, description, dublin_core_element_id) FROM stdin;
+4	term_test	test titre terme	1
+5	term2_test2	test2	2
+6	tern3	test3	1
+7	term4	term4desc	2
+8	term5	term5desc	4
+9	premiertest	test	1
 \.
 
 
@@ -424,35 +477,42 @@ SELECT pg_catalog.setval('public.admin_id_seq', 1, true);
 -- Name: classification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.classification_id_seq', 2, true);
-
-
---
--- Name: document_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
---
-
-SELECT pg_catalog.setval('public.document_document_id_seq', 1, false);
+SELECT pg_catalog.setval('public.classification_id_seq', 8, true);
 
 
 --
 -- Name: document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.document_id_seq', 9, true);
+SELECT pg_catalog.setval('public.document_id_seq', 21, true);
 
 
 --
--- Name: dublin_core_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+-- Name: document_relation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.dublin_core_id_seq', 25, true);
+SELECT pg_catalog.setval('public.document_relation_id_seq', 6, true);
+
+
+--
+-- Name: dublin_core_element_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.dublin_core_element_id_seq', 54, true);
+
+
+--
+-- Name: dublin_core_relation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
+--
+
+SELECT pg_catalog.setval('public.dublin_core_relation_id_seq', 54, true);
 
 
 --
 -- Name: metadata_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.metadata_id_seq', 1, false);
+SELECT pg_catalog.setval('public.metadata_id_seq', 9, true);
 
 
 --
@@ -461,14 +521,6 @@ SELECT pg_catalog.setval('public.metadata_id_seq', 1, false);
 
 ALTER TABLE ONLY public.admin
     ADD CONSTRAINT admin_pkey PRIMARY KEY (id);
-
-
---
--- Name: classification_admin classification_admin_pkey; Type: CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.classification_admin
-    ADD CONSTRAINT classification_admin_pkey PRIMARY KEY (classification_id, admin_id);
 
 
 --
@@ -488,14 +540,6 @@ ALTER TABLE ONLY public.doctrine_migration_versions
 
 
 --
--- Name: document_document document_document_pkey; Type: CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.document_document
-    ADD CONSTRAINT document_document_pkey PRIMARY KEY (id);
-
-
---
 -- Name: document_metadata document_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: main
 --
 
@@ -512,19 +556,27 @@ ALTER TABLE ONLY public.document
 
 
 --
--- Name: dublin_core dublin_core_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+-- Name: document_relation document_relation_pkey; Type: CONSTRAINT; Schema: public; Owner: main
 --
 
-ALTER TABLE ONLY public.dublin_core
-    ADD CONSTRAINT dublin_core_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.document_relation
+    ADD CONSTRAINT document_relation_pkey PRIMARY KEY (id);
 
 
 --
--- Name: metadata_classification metadata_classification_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+-- Name: dublin_core_element dublin_core_element_pkey; Type: CONSTRAINT; Schema: public; Owner: main
 --
 
-ALTER TABLE ONLY public.metadata_classification
-    ADD CONSTRAINT metadata_classification_pkey PRIMARY KEY (metadata_id, classification_id);
+ALTER TABLE ONLY public.dublin_core_element
+    ADD CONSTRAINT dublin_core_element_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: dublin_core_relation dublin_core_relation_pkey; Type: CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.dublin_core_relation
+    ADD CONSTRAINT dublin_core_relation_pkey PRIMARY KEY (id);
 
 
 --
@@ -543,59 +595,38 @@ CREATE UNIQUE INDEX classification_uk ON public.classification USING btree (code
 
 
 --
--- Name: document_document_uk; Type: INDEX; Schema: public; Owner: main
+-- Name: document_relation_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE UNIQUE INDEX document_document_uk ON public.document_document USING btree (document_source_id, document_target_id, dublin_core_id);
-
-
---
--- Name: dublin_core_uk; Type: INDEX; Schema: public; Owner: main
---
-
-CREATE UNIQUE INDEX dublin_core_uk ON public.dublin_core USING btree (element);
+CREATE UNIQUE INDEX document_relation_uk ON public.document_relation USING btree (document_source_id, document_target_id, dublin_core_relation_id);
 
 
 --
--- Name: idx_4f1434141df597a7; Type: INDEX; Schema: public; Owner: main
+-- Name: document_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE INDEX idx_4f1434141df597a7 ON public.metadata USING btree (dublin_core_id);
-
-
---
--- Name: idx_57a87b2f1df597a7; Type: INDEX; Schema: public; Owner: main
---
-
-CREATE INDEX idx_57a87b2f1df597a7 ON public.document_document USING btree (dublin_core_id);
+CREATE UNIQUE INDEX document_uk ON public.document USING btree (title, start_date, version, classification_id);
 
 
 --
--- Name: idx_57a87b2f7b623c7; Type: INDEX; Schema: public; Owner: main
+-- Name: dublin_core_element_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE INDEX idx_57a87b2f7b623c7 ON public.document_document USING btree (document_target_id);
-
-
---
--- Name: idx_57a87b2f870434c0; Type: INDEX; Schema: public; Owner: main
---
-
-CREATE INDEX idx_57a87b2f870434c0 ON public.document_document USING btree (document_source_id);
+CREATE UNIQUE INDEX dublin_core_element_uk ON public.dublin_core_element USING btree (element);
 
 
 --
--- Name: idx_a45326f22a86559f; Type: INDEX; Schema: public; Owner: main
+-- Name: dublin_core_relation_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE INDEX idx_a45326f22a86559f ON public.classification_admin USING btree (classification_id);
+CREATE UNIQUE INDEX dublin_core_relation_uk ON public.dublin_core_relation USING btree (relation);
 
 
 --
--- Name: idx_a45326f2642b8210; Type: INDEX; Schema: public; Owner: main
+-- Name: idx_4f143414e2021f97; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE INDEX idx_a45326f2642b8210 ON public.classification_admin USING btree (admin_id);
+CREATE INDEX idx_4f143414e2021f97 ON public.metadata USING btree (dublin_core_element_id);
 
 
 --
@@ -613,20 +644,6 @@ CREATE INDEX idx_c0d5c54ddc9ee959 ON public.document_metadata USING btree (metad
 
 
 --
--- Name: idx_d33f5af02a86559f; Type: INDEX; Schema: public; Owner: main
---
-
-CREATE INDEX idx_d33f5af02a86559f ON public.metadata_classification USING btree (classification_id);
-
-
---
--- Name: idx_d33f5af0dc9ee959; Type: INDEX; Schema: public; Owner: main
---
-
-CREATE INDEX idx_d33f5af0dc9ee959 ON public.metadata_classification USING btree (metadata_id);
-
-
---
 -- Name: idx_d8698a762a86559f; Type: INDEX; Schema: public; Owner: main
 --
 
@@ -634,10 +651,31 @@ CREATE INDEX idx_d8698a762a86559f ON public.document USING btree (classification
 
 
 --
+-- Name: idx_ed48b61060c36e58; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_ed48b61060c36e58 ON public.document_relation USING btree (dublin_core_relation_id);
+
+
+--
+-- Name: idx_ed48b6107b623c7; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_ed48b6107b623c7 ON public.document_relation USING btree (document_target_id);
+
+
+--
+-- Name: idx_ed48b610870434c0; Type: INDEX; Schema: public; Owner: main
+--
+
+CREATE INDEX idx_ed48b610870434c0 ON public.document_relation USING btree (document_source_id);
+
+
+--
 -- Name: metadata_uk; Type: INDEX; Schema: public; Owner: main
 --
 
-CREATE UNIQUE INDEX metadata_uk ON public.metadata USING btree (code);
+CREATE UNIQUE INDEX metadata_uk ON public.metadata USING btree (term, dublin_core_element_id);
 
 
 --
@@ -648,58 +686,11 @@ CREATE UNIQUE INDEX uniq_880e0d76f85e0677 ON public.admin USING btree (username)
 
 
 --
--- Name: uniq_d8698a76989d9b62; Type: INDEX; Schema: public; Owner: main
---
-
-CREATE UNIQUE INDEX uniq_d8698a76989d9b62 ON public.document USING btree (slug);
-
-
---
 -- Name: metadata fk_4f1434141df597a7; Type: FK CONSTRAINT; Schema: public; Owner: main
 --
 
 ALTER TABLE ONLY public.metadata
-    ADD CONSTRAINT fk_4f1434141df597a7 FOREIGN KEY (dublin_core_id) REFERENCES public.dublin_core(id);
-
-
---
--- Name: document_document fk_57a87b2f1df597a7; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.document_document
-    ADD CONSTRAINT fk_57a87b2f1df597a7 FOREIGN KEY (dublin_core_id) REFERENCES public.dublin_core(id);
-
-
---
--- Name: document_document fk_57a87b2f7b623c7; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.document_document
-    ADD CONSTRAINT fk_57a87b2f7b623c7 FOREIGN KEY (document_target_id) REFERENCES public.document(id);
-
-
---
--- Name: document_document fk_57a87b2f870434c0; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.document_document
-    ADD CONSTRAINT fk_57a87b2f870434c0 FOREIGN KEY (document_source_id) REFERENCES public.document(id);
-
-
---
--- Name: classification_admin fk_a45326f22a86559f; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.classification_admin
-    ADD CONSTRAINT fk_a45326f22a86559f FOREIGN KEY (classification_id) REFERENCES public.classification(id) ON DELETE CASCADE;
-
-
---
--- Name: classification_admin fk_a45326f2642b8210; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.classification_admin
-    ADD CONSTRAINT fk_a45326f2642b8210 FOREIGN KEY (admin_id) REFERENCES public.admin(id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_4f1434141df597a7 FOREIGN KEY (dublin_core_element_id) REFERENCES public.dublin_core_element(id);
 
 
 --
@@ -719,27 +710,35 @@ ALTER TABLE ONLY public.document_metadata
 
 
 --
--- Name: metadata_classification fk_d33f5af02a86559f; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.metadata_classification
-    ADD CONSTRAINT fk_d33f5af02a86559f FOREIGN KEY (classification_id) REFERENCES public.classification(id) ON DELETE CASCADE;
-
-
---
--- Name: metadata_classification fk_d33f5af0dc9ee959; Type: FK CONSTRAINT; Schema: public; Owner: main
---
-
-ALTER TABLE ONLY public.metadata_classification
-    ADD CONSTRAINT fk_d33f5af0dc9ee959 FOREIGN KEY (metadata_id) REFERENCES public.metadata(id) ON DELETE CASCADE;
-
-
---
 -- Name: document fk_d8698a762a86559f; Type: FK CONSTRAINT; Schema: public; Owner: main
 --
 
 ALTER TABLE ONLY public.document
     ADD CONSTRAINT fk_d8698a762a86559f FOREIGN KEY (classification_id) REFERENCES public.classification(id);
+
+
+--
+-- Name: document_relation fk_ed48b6101df597a7; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.document_relation
+    ADD CONSTRAINT fk_ed48b6101df597a7 FOREIGN KEY (dublin_core_relation_id) REFERENCES public.dublin_core_relation(id);
+
+
+--
+-- Name: document_relation fk_ed48b6107b623c7; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.document_relation
+    ADD CONSTRAINT fk_ed48b6107b623c7 FOREIGN KEY (document_target_id) REFERENCES public.document(id);
+
+
+--
+-- Name: document_relation fk_ed48b610870434c0; Type: FK CONSTRAINT; Schema: public; Owner: main
+--
+
+ALTER TABLE ONLY public.document_relation
+    ADD CONSTRAINT fk_ed48b610870434c0 FOREIGN KEY (document_source_id) REFERENCES public.document(id);
 
 
 --

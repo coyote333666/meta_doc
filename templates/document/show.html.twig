@@ -8,13 +8,7 @@
     <table class="table">
             <tr>
                 <td colspan=2><h2>
-                {% if document.uri == true %}
-                <a href="{{ document.uri }}">
-                {% endif %}
                 {{ document.title }}
-                {% if document.uri == true %}
-                </a>
-                {% endif %}
                 </h2></td>
             </tr>
             <tr>
@@ -22,32 +16,32 @@
                 <td>{{ document.id }}</td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th>{{ 'label.text'|trans }}</th>
                 <td>{{ document.text  | raw }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>{{ 'label.title'|trans }}</th>
                 <td>{{ document.title }}</td>
             </tr>
             <tr>
-                <th>Start_date</th>
+                <th>{{ 'label.start_date'|trans }}</th>
                 <td>{{ document.startDate ? document.startDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>End_date</th>
+                <th>{{ 'label.end_date'|trans }}</th>
                 <td>{{ document.endDate ? document.endDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>State</th>
+                <th>{{ 'label.state'|trans }}</th>
                 <td>{{ document.state }}</td>
             </tr>
             <tr>
-                <th>Version</th>
+                <th>{{ 'label.version'|trans }}</th>
                 <td>{{ document.version }}</td>
             </tr>
             {% if document.metadatas|length > 0 %}
             <tr>
-                <td colspan=2><h2>Tags</h2></td>
+                <td colspan=2><h2>{{ 'label.tags'|trans }}</h2></td>
             </tr>
             {% endif %}
             {% for metadata in document.metadatas %}
@@ -60,7 +54,7 @@
             {% endfor %}
             {% if document.documentSources|length > 0 %}
             <tr>
-                <td colspan=2><h2>Sources</h2></td>
+                <td colspan=2><h2>{{ 'label.sources'|trans }}</h2></td>
             </tr>
             {% endif %}
             {% for relation in document.documentSources %}
@@ -73,7 +67,7 @@
             {% endfor %}
             {% if document.documentTargets|length > 0 %}
             <tr>
-                <td colspan=2><h2>Targets</h2></td>
+                <td colspan=2><h2>{{ 'label.targets'|trans }}</h2></td>
             </tr>
             {% endif %}
             {% for relation in document.documentTargets %}
@@ -87,7 +81,7 @@
     </table>
     </div>
     <div>
-        <a href="{{ path('classification', {'code': code}) }}">back to classification</a>
+        <a href="{{ path('classification', {'code': code}) }}">{{ 'classification.redirection'|trans }}</a>
     </div>
 </tbody>
 {% endblock %}
