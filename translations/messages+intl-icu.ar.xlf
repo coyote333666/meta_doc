@@ -72,7 +72,7 @@
             </trans-unit>
             <trans-unit id="app.name">
                 <source>app.name</source>
-                <target>Metadatas and documents</target>
+                <target>Metaadtadand documents</target>
             </trans-unit>
             <trans-unit id="menu.admin">
                 <source>menu.admin</source>
@@ -126,18 +126,122 @@
                 <source>admin.classifications</source>
                 <target>التصنيفات</target>
             </trans-unit>
-            <trans-unit id="admin.dublinElem">
-                <source>admin.dublinElem</source>
-                <target>عنصر دبلن الأساسي</target>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>عناصر DuplinCore</target>
             </trans-unit>
-            <trans-unit id="admin.dublinRela">
-                <source>admin.dublinRela</source>
-                <target>علاقة دبلن الأساسية</target>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>العلاقات الدوميمية</target>
             </trans-unit>
-            <trans-unit id="admin.metadata">
-                <source>admin.metadata</source>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
                 <target>Metadataتز</target>
             </trans-unit>
-        </body>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>تحرير</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>العلاقات الوثيقة</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>الكود</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>الوصف</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>الكود</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>التعريف</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>الشروط</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>العنوان</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>الكود</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>الوصف</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>جيم-التصنيف</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>الكود</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>النسخة</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>الحالة</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>النص</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>تاريخ البدء</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>تاريخ الانتهاء</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>Metadataتز</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>علاقة DuplCore</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>مصدر الوثيقة</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>هدف الوثيقة</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>العنصر</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>التعريف</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>العلاقة</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>الشروط</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>عنصر DuplineCore</target>
+            </trans-unit>
+       </body>
     </file>
 </xliff>

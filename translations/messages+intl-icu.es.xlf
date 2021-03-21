@@ -126,18 +126,122 @@
                 <source>admin.classifications</source>
                 <target>Clasificaciones</target>
             </trans-unit>
-            <trans-unit id="admin.dublinElem">
-                <source>admin.dublinElem</source>
-                <target>Elemento central de Dublín</target>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>Elementos DublinCore</target>
             </trans-unit>
-            <trans-unit id="admin.dublinRela">
-                <source>admin.dublinRela</source>
-                <target>Relación básica de Dublín</target>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>Relaciones de Dublincore</target>
             </trans-unit>
-            <trans-unit id="admin.metadata">
-                <source>admin.metadata</source>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
                 <target>Metadatas</target>
             </trans-unit>
-        </body>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>Edición</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>Relaciones de documentos</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>Código</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Descripción</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>Definición</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>Término</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>Código</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>Descripción</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>Clasificación</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>Versión</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>Estado</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>Texto</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>Fecha de inicio</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>Fecha final</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>Metadatas</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>Relación DublinCore</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>Fuente del documento</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>Destino del documento</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>Elemento</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>Definición</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>Relación</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>Término</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>Elemento DublinCore</target>
+            </trans-unit>
+       </body>
     </file>
 </xliff>

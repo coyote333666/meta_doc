@@ -126,18 +126,122 @@
                 <source>admin.classifications</source>
                 <target>Klassifikationen</target>
             </trans-unit>
-            <trans-unit id="admin.dublinElem">
-                <source>admin.dublinElem</source>
-                <target>Kernelement Dublin</target>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>DublinCore-Elemente</target>
             </trans-unit>
-            <trans-unit id="admin.dublinRela">
-                <source>admin.dublinRela</source>
-                <target>Kernbeziehung von Dublin</target>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>DublinCore-Beziehungen</target>
             </trans-unit>
-            <trans-unit id="admin.metadata">
-                <source>admin.metadata</source>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
                 <target>Metadatas</target>
             </trans-unit>
-        </body>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>Bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>Dokumentbeziehungen</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>Definition</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>Begriff</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>Klassifizierung</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>Version</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>Startdatum</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>Enddatum</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>Metadatas</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>DublinCore-Beziehung</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>Dokumentquelle</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>Dokumentziel</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>Element</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>Definition</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>Beziehung</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>Begriff</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>DublinCore-Element</target>
+            </trans-unit>
+       </body>
     </file>
 </xliff>

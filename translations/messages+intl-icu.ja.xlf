@@ -126,18 +126,122 @@
                 <source>admin.classifications</source>
                 <target>分類</target>
             </trans-unit>
-            <trans-unit id="admin.dublinElem">
-                <source>admin.dublinElem</source>
-                <target>ダブリン・コア・エレメント</target>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>DublinCore エレメント</target>
             </trans-unit>
-            <trans-unit id="admin.dublinRela">
-                <source>admin.dublinRela</source>
-                <target>ダブリン中心の関係</target>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>DublinCore の関係</target>
             </trans-unit>
-            <trans-unit id="admin.metadata">
-                <source>admin.metadata</source>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
                 <target>メタデータ</target>
             </trans-unit>
-        </body>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>編集中</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>ドキュメントの関係</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>法</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>解説</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>定義</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>用語</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>書名</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>法</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>解説</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>分類</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>バージョン</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>状態</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>本文</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>開始日</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>終了日</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>メタデータ</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>デュブリンコア関係</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>文書ソース</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>文書ターゲット</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>エレメント</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>定義</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>リレーション</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>用語</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>DublinCore エレメント</target>
+            </trans-unit>
+       </body>
     </file>
 </xliff>

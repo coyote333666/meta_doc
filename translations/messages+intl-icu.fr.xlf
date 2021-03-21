@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="mit_license">
                 <source>mit_license</source>
@@ -16,7 +16,7 @@
             </trans-unit>
             <trans-unit id="label.view">
                 <source>label.view</source>
-                <target>Vue</target>
+                <target>Voir</target>
             </trans-unit>
             <trans-unit id="paginator.previous">
                 <source>paginator.previous</source>
@@ -128,11 +128,11 @@
             </trans-unit>
             <trans-unit id="admin.dublinElements">
                 <source>admin.dublinElements</source>
-                <target>Éléments de base de Dublin</target>
+                <target>Éléments du Dublin Core</target>
             </trans-unit>
             <trans-unit id="admin.dublinRelations">
                 <source>admin.dublinRelations</source>
-                <target>Relations de base de Dublin</target>
+                <target>Relations du Dublin Core</target>
             </trans-unit>
             <trans-unit id="admin.metadatas">
                 <source>admin.metadatas</source>
@@ -165,6 +165,82 @@
             <trans-unit id="label.term">
                 <source>label.term</source>
                 <target>Terme</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>Code</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>Classification</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>Version</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>État</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>Texte descriptif</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>Date de début</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>Date de fin</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>Métadonnées</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>Relation du Dublin Core</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>Source du document</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>Cible du document</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>Elément</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>Définition</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>Relation</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>Terme</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>Elément du Dublin Core</target>
             </trans-unit>
        </body>
     </file>

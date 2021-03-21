@@ -126,18 +126,122 @@
                 <source>admin.classifications</source>
                 <target>Классификации</target>
             </trans-unit>
-            <trans-unit id="admin.dublinElem">
-                <source>admin.dublinElem</source>
-                <target>Дублинский основной элемент</target>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>Элементы DublinCore</target>
             </trans-unit>
-            <trans-unit id="admin.dublinRela">
-                <source>admin.dublinRela</source>
-                <target>Дублинское основное соотношение</target>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>Дублинские отношения</target>
             </trans-unit>
-            <trans-unit id="admin.metadata">
-                <source>admin.metadata</source>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
                 <target>Метаданные</target>
             </trans-unit>
-        </body>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>Редактирование</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>Отношения с документами</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>Код</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>Определение</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>Термин</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>Код</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>Классификация</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>Версия</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>Государство</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>Текст</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>Начальная дата</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>Дата окончания</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>Метаданные</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>Связь DublinCore</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>Источник документа</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>Целевой объект документа</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>Элемент</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>Определение</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>Отношение</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>Термин</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>элемент DublinCore</target>
+            </trans-unit>
+       </body>
     </file>
 </xliff>

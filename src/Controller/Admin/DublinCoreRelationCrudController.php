@@ -25,7 +25,7 @@ class DublinCoreRelationCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         $editing = $this->translator->trans('admin.editing');
-        $dublinElements = $this->translator->trans('admin.dublinElements');
+        $dublinElements = $this->translator->trans('admin.dublinRelations');
 
         return $crud
             ->setEntityLabelInSingular('Dublin core relation')

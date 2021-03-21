@@ -126,18 +126,122 @@
                 <source>admin.classifications</source>
                 <target>分类</target>
             </trans-unit>
-            <trans-unit id="admin.dublinElem">
-                <source>admin.dublinElem</source>
-                <target>都柏林核心元件</target>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>DublinCore 元素</target>
             </trans-unit>
-            <trans-unit id="admin.dublinRela">
-                <source>admin.dublinRela</source>
-                <target>都柏林核心关系</target>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>杜布林核心关系</target>
             </trans-unit>
-            <trans-unit id="admin.metadata">
-                <source>admin.metadata</source>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
                 <target>元数据</target>
             </trans-unit>
-        </body>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>编辑</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>文档关系</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>守则</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>描述</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>伊德</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>定义</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>任期</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>标题</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>守则</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>描述</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>分类</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>伊德</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>版本</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>国家</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>文本</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>开始日期</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>结束日期</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>元数据</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>DublinCore 关系</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>文档源</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>文档目标</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>元素</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>定义</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>关系</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>任期</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>DublinCore 元素</target>
+            </trans-unit>
+       </body>
     </file>
 </xliff>
