@@ -44,16 +44,16 @@ parameters:
     app_locales: ar|en|fr|de|es|ru|it|ja|zh
 ```
 
-Load Dublin Core data for your local parameter :
+To create database, use Symfony with docker or this script (password main, user main) :
+```bash
+$ symfony run psql -f meta_doc.sql
+```
+
+If necessary, load Dublin Core data for your local parameter :
 
 ```bash
 $ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
 $ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
-```
-
-Or execute this script to load test data:
-```bash
-$ symfony run psql -f meta_doc.sql
 ```
 
 Run application
