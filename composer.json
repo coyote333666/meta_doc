@@ -14,7 +14,6 @@
         "easycorp/easyadmin-bundle": "^3",
         "fakerphp/faker": "^1.13",
         "sensio/framework-extra-bundle": "^6.0",
-        "stfalcon/tinymce-bundle": "3.0",
         "stof/doctrine-extensions-bundle": "^1.5",
         "symfony/cache": "5.2.*",
         "symfony/console": "5.2.*",
