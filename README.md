@@ -27,6 +27,7 @@ this command:
 ```bash
 $ git clone https://github.com/viniboy666/meta_doc meta_doc
 $ cd metad_doc/
+$ composer update
 $ composer install --no-interaction
 $ yarn add node-sass sass-loader --dev
 $ symfony run yarn encore dev
@@ -48,6 +49,11 @@ Load Dublin Core data for your local parameter :
 ```bash
 $ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
 $ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
+```
+
+Or execute this script to load test data:
+```bash
+$ symfony run psql -f meta_doc.sql
 ```
 
 Run application
