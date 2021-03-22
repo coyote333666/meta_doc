@@ -248,7 +248,7 @@ ALTER TABLE public.metadata_id_seq OWNER TO main;
 --
 
 COPY public.admin (id, username, roles, password) FROM stdin;
-1	admin	["ROLE_ADMIN"]	$argon2id$v=19$m=65536,t=4,p=1$pXnVrkFDGFMCrsKEgF2ycw$dDq8lHi5lZ2VHIudPn7OfmDUeEkBOUsVtByZNQbKosc
+2	admin	["ROLE_ADMIN"]	$argon2id$v=19$m=65536,t=4,p=1$FaxYTKr6tHFuk5FimcNABA$/Zj8RRuagZJtBRp/7QOstRzVJjJMTg+TZeE2wEs/OH8
 \.
 
 
@@ -257,9 +257,9 @@ COPY public.admin (id, username, roles, password) FROM stdin;
 --
 
 COPY public.classification (id, code, description, title) FROM stdin;
-5	00003	<div>test 00003</div>	test 00003
-2	00001	<div>Premier noeud</div>	Classification test premier noeud
-1	00000	<div>Noeud racine home.</div>	Home
+9	00000	<div>Demo <strong>classification</strong></div>	Root Classification
+10	00001	<div>Demo First Classification</div>	First Classification
+11	00002	<div><strong>Demo&nbsp;</strong>meta_doc third classification</div>	Third classification
 \.
 
 
@@ -357,23 +357,10 @@ DoctrineMigrations\\Version20210318012540	2021-03-17 21:25:57	31
 --
 
 COPY public.document (id, text, title, start_date, end_date, state, version, classification_id) FROM stdin;
-2	doc cla 00001 text test text test tess test long tès long	doc cla 00001 test 2	2021-02-12	\N	\N	\N	2
-9	test 5	test 5	2021-02-16	\N	\N	\N	1
-6	<div>test 346</div>	vf test 3	2021-02-16	2018-02-03	en cours	\N	1
-7	<div>test 4</div>	test 4	2021-02-16	\N	\N	\N	1
-10	\N	test34	2021-03-04	\N	\N	\N	2
-11	<div><strong>test</strong></div>	test55	2021-03-05	\N	creation	\N	2
-12	<div>test</div>	test 56	2021-03-05	\N	creation	\N	1
-13	<div>test</div>	test 12353	2021-03-05	\N	creation	\N	1
-14	test 2	vini test	2021-03-09	2016-01-01	\N	\N	1
-15	TEST	testVINCENT	2021-03-09	2016-01-01	\N	\N	1
-16	\N	test vini 333	2021-03-09	2016-01-01	\N	\N	1
-17	\N	testultimevini	2021-03-09	2016-01-01	\N	\N	2
-18	\N	testvini5	2021-03-10	2016-01-01	\N	\N	1
-20	<p>test</p>\r\n\r\n<p><strong>test<em>&nbsp;en italique&nbsp;</em></strong></p>\r\n\r\n<ul>\r\n\t<li><strong><em>points de forme</em></strong></li>\r\n</ul>	test ckeditor	2021-03-12	\N	\N	\N	1
-4	<div>test 346<strong>cece<br></strong><br></div>	vf test	2021-02-16	2018-02-03	\N	\N	1
-19	<div>testVF2036</div>	test2036	2021-03-12	2016-01-01	\N	\N	1
-3	<div>test</div>	test	2021-02-16	\N	state.creation	\N	1
+22	<div>Test for meta_doc demo <em>first document</em></div>	Demo title	2021-03-22	\N	Creation	1	9
+23	<div>Demo test for<strong> meta_doc</strong></div>	Document for the firs classification test	2021-03-22	\N	Revision	1	10
+24	<div>Demo test for <strong><em>the third classification</em></strong></div>	Document for the third classification	2021-03-22	\N	Creation	1	11
+25	<div>demo <strong>meta_doc</strong></div>	another document	2021-03-22	\N	Creation	1	9
 \.
 
 
@@ -382,20 +369,12 @@ COPY public.document (id, text, title, start_date, end_date, state, version, cla
 --
 
 COPY public.document_metadata (document_id, metadata_id) FROM stdin;
-12	4
-12	5
-13	4
-13	5
-14	5
-15	4
-16	5
-17	4
-18	8
-18	7
-20	8
-20	5
-3	4
-3	8
+23	10
+23	11
+22	10
+24	11
+24	12
+25	10
 \.
 
 
@@ -404,10 +383,8 @@ COPY public.document_metadata (document_id, metadata_id) FROM stdin;
 --
 
 COPY public.document_relation (id, dublin_core_relation_id, document_source_id, document_target_id) FROM stdin;
-3	5	9	6
-4	2	19	7
-5	4	3	19
-6	2	6	3
+7	2	23	22
+8	3	23	24
 \.
 
 
@@ -445,10 +422,10 @@ COPY public.dublin_core_relation (id, relation, definition) FROM stdin;
 3	isPartOf	A related resource in which the described resource is physically or logically included.
 4	isReferencedBy	A related resource that references, cites, or otherwise points to the described resource.
 5	isRequiredBy	A related resource that requires the described resource to support its function, delivery, or coherence.
-7	isVersionOf	A related resource of which the described resource is a version, edition, or adaptation.
-8	hasFormat	A related resource that is substantially the same as the pre-existing described resource, but in another format.
-9	hasPart	A related resource that is included either physically or logically in the described resource.
-10	hasVersion	A related resource that is a version, edition, or adaptation of the described resource.
+6	isVersionOf	A related resource of which the described resource is a version, edition, or adaptation.
+7	hasFormat	A related resource that is substantially the same as the pre-existing described resource, but in another format.
+8	hasPart	A related resource that is included either physically or logically in the described resource.
+9	hasVersion	A related resource that is a version, edition, or adaptation of the described resource.
 \.
 
 
@@ -457,12 +434,9 @@ COPY public.dublin_core_relation (id, relation, definition) FROM stdin;
 --
 
 COPY public.metadata (id, term, description, dublin_core_element_id) FROM stdin;
-4	term_test	test titre terme	1
-5	term2_test2	test2	2
-6	tern3	test3	1
-7	term4	term4desc	2
-8	term5	term5desc	4
-9	premiertest	test	1
+10	demo meta_doc term	test demo meta_doc term	2
+11	Paper format	Meta_doc term test	9
+12	meta term for meta_doc	Contributor test	6
 \.
 
 
@@ -470,49 +444,49 @@ COPY public.metadata (id, term, description, dublin_core_element_id) FROM stdin;
 -- Name: admin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.admin_id_seq', 1, true);
+SELECT pg_catalog.setval('public.admin_id_seq', 2, true);
 
 
 --
 -- Name: classification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.classification_id_seq', 8, true);
+SELECT pg_catalog.setval('public.classification_id_seq', 11, true);
 
 
 --
 -- Name: document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.document_id_seq', 21, true);
+SELECT pg_catalog.setval('public.document_id_seq', 25, true);
 
 
 --
 -- Name: document_relation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.document_relation_id_seq', 6, true);
+SELECT pg_catalog.setval('public.document_relation_id_seq', 8, true);
 
 
 --
 -- Name: dublin_core_element_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.dublin_core_element_id_seq', 54, true);
+SELECT pg_catalog.setval('public.dublin_core_element_id_seq', 50, true);
 
 
 --
 -- Name: dublin_core_relation_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.dublin_core_relation_id_seq', 54, true);
+SELECT pg_catalog.setval('public.dublin_core_relation_id_seq', 50, true);
 
 
 --
 -- Name: metadata_id_seq; Type: SEQUENCE SET; Schema: public; Owner: main
 --
 
-SELECT pg_catalog.setval('public.metadata_id_seq', 9, true);
+SELECT pg_catalog.setval('public.metadata_id_seq', 12, true);
 
 
 --
