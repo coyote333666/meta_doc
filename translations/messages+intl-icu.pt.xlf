@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mit_license">
+                <source>mit_license</source>
+                <target>Licença MIT</target>
+            </trans-unit>
+            <trans-unit id="classification.title">
+                <source>classification.title</source>
+                <target>Índice de classificações</target>
+            </trans-unit>
+            <trans-unit id="document.count">
+                <source>document.count</source>
+                <target>Há {count, number} documento (s).</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>Visualização</target>
+            </trans-unit>
+            <trans-unit id="paginator.previous">
+                <source>paginator.previous</source>
+                <target>Anterior</target>
+            </trans-unit>
+            <trans-unit id="paginator.next">
+                <source>paginator.next</source>
+                <target>Próximo</target>
+            </trans-unit>
+            <trans-unit id="document.no_documents_found">
+                <source>document.no_documents_found</source>
+                <target>Nenhum documento encontrado.</target>
+            </trans-unit>
+            <trans-unit id="label.text">
+                <source>label.text</source>
+                <target>Texto</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="label.start_date">
+                <source>label.start_date</source>
+                <target>Data de início</target>
+            </trans-unit>
+            <trans-unit id="label.end_date">
+                <source>label.end_date</source>
+                <target>Data de encerramento</target>
+            </trans-unit>
+            <trans-unit id="label.state">
+                <source>label.state</source>
+                <target>Estado</target>
+            </trans-unit>
+            <trans-unit id="label.version">
+                <source>label.version</source>
+                <target>Versão</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Metadados</target>
+            </trans-unit>
+            <trans-unit id="label.sources">
+                <source>label.sources</source>
+                <target>Fontes</target>
+            </trans-unit>
+            <trans-unit id="label.targets">
+                <source>label.targets</source>
+                <target>Destinos</target>
+            </trans-unit>
+            <trans-unit id="classification.redirection">
+                <source>classification.redirection</source>
+                <target>Voltar à classificação</target>
+            </trans-unit>
+            <trans-unit id="app.name">
+                <source>app.name</source>
+                <target>Metadados e documentos</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>Admin</target>
+            </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>Pesquisa</target>
+            </trans-unit>
+            <trans-unit id="redirection.top">
+                <source>redirection.top</source>
+                <target>Voltar ao topo</target>
+            </trans-unit>
+            <trans-unit id="admin.back_website">
+                <source>admin.back_website</source>
+                <target>Voltar para o website</target>
+            </trans-unit>
+            <trans-unit id="admin.relations">
+                <source>admin.relations</source>
+                <target>Relações de documentos</target>
+            </trans-unit>
+            <trans-unit id="search.for">
+                <source>search.for</source>
+                <target>Procurar por</target>
+            </trans-unit>
+            <trans-unit id="state.creation">
+                <source>state.creation</source>
+                <target>Criação</target>
+            </trans-unit>
+            <trans-unit id="state.revision">
+                <source>state.revision</source>
+                <target>Revisão</target>
+            </trans-unit>
+            <trans-unit id="state.active">
+                <source>state.active</source>
+                <target>Ativo</target>
+            </trans-unit>
+            <trans-unit id="state.semi_active">
+                <source>state.semi_active</source>
+                <target>Semi ativo</target>
+            </trans-unit>
+            <trans-unit id="state.inactive">
+                <source>state.inactive</source>
+                <target>Inativo</target>
+            </trans-unit>
+            <trans-unit id="admin.documents">
+                <source>admin.documents</source>
+                <target>Documentos</target>
+            </trans-unit>
+            <trans-unit id="admin.classifications">
+                <source>admin.classifications</source>
+                <target>Classificações</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinElements">
+                <source>admin.dublinElements</source>
+                <target>Elementos DublinCore</target>
+            </trans-unit>
+            <trans-unit id="admin.dublinRelations">
+                <source>admin.dublinRelations</source>
+                <target>Relações DublinCore</target>
+            </trans-unit>
+            <trans-unit id="admin.metadatas">
+                <source>admin.metadatas</source>
+                <target>Metadados</target>
+            </trans-unit>
+            <trans-unit id="admin.editing">
+                <source>admin.editing</source>
+                <target>Edição</target>
+            </trans-unit>
+            <trans-unit id="admin.documentRelations">
+                <source>admin.documentRelations</source>
+                <target>Relações de documentos</target>
+            </trans-unit>
+            <trans-unit id="label.code">
+                <source>label.code</source>
+                <target>Código</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Descrição</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label.definition">
+                <source>label.definition</source>
+                <target>Definição</target>
+            </trans-unit>
+            <trans-unit id="label.term">
+                <source>label.term</source>
+                <target>Termo</target>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="code">
+                <source>Code</source>
+                <target>Código</target>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+                <target>Descrição</target>
+            </trans-unit>
+            <trans-unit id="classification">
+                <source>Classification</source>
+                <target>Classificação</target>
+            </trans-unit>
+            <trans-unit id="id">
+                <source>Id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="version">
+                <source>Version</source>
+                <target>Versão</target>
+            </trans-unit>
+            <trans-unit id="state">
+                <source>State</source>
+                <target>Estado</target>
+            </trans-unit>
+            <trans-unit id="text">
+                <source>Text</source>
+                <target>Texto</target>
+            </trans-unit>
+            <trans-unit id="start_date">
+                <source>Start Date</source>
+                <target>Data de início</target>
+            </trans-unit>
+            <trans-unit id="end_date">
+                <source>End Date</source>
+                <target>Data de encerramento</target>
+            </trans-unit>
+            <trans-unit id="metadatas">
+                <source>Metadatas</source>
+                <target>Metadados</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_relation">
+                <source>Dublin Core Relation</source>
+                <target>Relação DublinCore</target>
+            </trans-unit>
+            <trans-unit id="document_source">
+                <source>Document Source</source>
+                <target>Origem do documento</target>
+            </trans-unit>
+            <trans-unit id="document_target">
+                <source>Document Target</source>
+                <target>Destino do documento</target>
+            </trans-unit>
+            <trans-unit id="element">
+                <source>Element</source>
+                <target>Elemento</target>
+            </trans-unit>
+            <trans-unit id="definition">
+                <source>Definition</source>
+                <target>Definição</target>
+            </trans-unit>
+            <trans-unit id="relation">
+                <source>Relation</source>
+                <target>Relação</target>
+            </trans-unit>
+            <trans-unit id="term">
+                <source>Term</source>
+                <target>Termo</target>
+            </trans-unit>
+            <trans-unit id="dublin_core_element">
+                <source>Dublin Core Element</source>
+                <target>Elemento DublinCore</target>
+            </trans-unit>
+       </body>
+    </file>
+</xliff>

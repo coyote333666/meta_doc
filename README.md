@@ -41,7 +41,7 @@ Modify your locale parameter in /config/services.yaml:
 parameters:
     locale: '<your locale parameter>'
     # This parameter defines the codes of the locales (languages) enabled in the application
-    app_locales: ar|en|fr|de|es|ru|it|ja|zh
+    app_locales: ar|en|fr|de|es|ru|it|ja|zh|pt
 ```
 
 To create public schema objects, use Symfony with docker or this script (database: main, password: main, user: main) :
