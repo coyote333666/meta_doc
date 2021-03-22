@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @ORM\Entity(repositoryClass=DocumentRepository::class)
@@ -79,15 +78,13 @@ class Document
      */
     #[Assert\NotBlank]
     private $classification;
-    private $translator;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct()
     {
         $this->metadatas = new ArrayCollection();
         $this->documentSources = new ArrayCollection();
         $this->documentTargets = new ArrayCollection();
         $this->start_date = new \DateTime();
-        $this->translator = $translator;
     }
 
     public function __toString(): string

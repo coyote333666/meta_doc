@@ -11,11 +11,15 @@ Requirements
 ------------
 
   * PHP 7.2.9 or higher;
-  * pdo_pgsql PHP extension enabled;
+  * pdo_pgsql PHP extension enabled in php.ini;
+  * intl PHP extension enabled in php.ini
+  * Postgresql standalone OR Docker and Docker compose
   * and the [usual Symfony application requirements][1].
 
 Installation
 ------------
+
+Verify that you have installed [composer][7], [npm (node.js)][8] and [yarn][9].
 
 [Download Symfony][5] to install the `symfony` binary on your computer and run
 this command:
@@ -24,6 +28,8 @@ this command:
 $ git clone https://github.com/viniboy666/meta_doc meta_doc
 $ cd metad_doc/
 $ composer install --no-interaction
+$ yarn add node-sass sass-loader --dev
+$ symfony run yarn encore dev
 ```
 
 Usage
@@ -37,10 +43,16 @@ parameters:
     app_locales: ar|en|fr|de|es|ru|it|ja|zh
 ```
 
+Load Dublin Core data for your local parameter :
+
+```bash
+$ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
+$ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
+```
 
 Run application
 ```bash
-$ symfony serve
+$ symfony server:start -d
 ```
 
 Then access the application in your browser at the given URL (<https://localhost:8000> by default).
@@ -55,3 +67,6 @@ Apache to run the application.
 [4]: https://gedcoyote.blogspot.com/
 [5]: https://symfony.com/download
 [6]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
+[7]: https://getcomposer.org/download/
+[8]: https://www.npmjs.com/get-npm
+[9]: https://yarnpkg.com/getting-started/install
