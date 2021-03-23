@@ -48,6 +48,7 @@ To create public schema objects, use Symfony with docker or this script (databas
 ```bash
 $ symfony run psql -f meta_doc.sql
 ```
+The username and password of the admin account is admin/admin.
 
 If necessary, load Dublin Core data for your local parameter :
 
