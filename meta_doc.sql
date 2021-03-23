@@ -349,6 +349,7 @@ DoctrineMigrations\\Version20210308190325	2021-03-08 14:03:30	29
 DoctrineMigrations\\Version20210315182640	2021-03-15 14:26:56	17
 DoctrineMigrations\\Version20210318012403	2021-03-17 21:24:39	9
 DoctrineMigrations\\Version20210318012540	2021-03-17 21:25:57	31
+DoctrineMigrations\\Version20210323233008	\N	\N
 \.
 
 

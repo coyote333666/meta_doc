@@ -19,7 +19,7 @@ Requirements
 Installation
 ------------
 
-Verify that you have installed [composer][7], [npm (node.js)][8] and [yarn][9].
+Verify that you have installed [composer][7], [git][8], [npm (node.js)][9] and [yarn][10].
 
 [Download Symfony][5] to install the `symfony` binary on your computer and run
 this command:
@@ -36,25 +36,34 @@ $ symfony run yarn encore dev
 Usage
 -----
 
+If you use Symfony with docker-compose, run this command :
+```bash
+$ docker-compose up -d
+$ symfony console doctrine:migrations:version --add --all
+$ symfony console make:migration
+$ symfony console doctrine:migrations:migrate
+$ symfony run psql -f meta_doc_copy.sql
+```
+
+If you use standalone postgresql, run this command (database: main, password: main, user: main):
+```bash
+$ symfony run psql -f meta_doc.sql
+```
+
+The username and password of the admin account are admin/admin.
+
+If necessary, load Dublin Core data for your local parameter :
+```bash
+$ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
+$ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
+```
+
 Modify your locale parameter in /config/services.yaml:
 ```bash
 parameters:
     locale: '<your locale parameter>'
     # This parameter defines the codes of the locales (languages) enabled in the application
     app_locales: ar|en|fr|de|es|ru|it|ja|zh|pt
-```
-
-To create public schema objects, use Symfony with docker compose or this script (database: main, password: main, user: main):
-```bash
-$ symfony run psql -f meta_doc.sql
-```
-The username and password of the admin account is admin/admin.
-
-If necessary, load Dublin Core data for your local parameter :
-
-```bash
-$ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
-$ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
 ```
 
 Run application
@@ -75,5 +84,6 @@ Apache to run the application.
 [5]: https://symfony.com/download
 [6]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
 [7]: https://getcomposer.org/download/
-[8]: https://www.npmjs.com/get-npm
-[9]: https://yarnpkg.com/getting-started/install
+[8]: https://git-scm.com/
+[9]: https://www.npmjs.com/get-npm
+[10]: https://yarnpkg.com/getting-started/install
