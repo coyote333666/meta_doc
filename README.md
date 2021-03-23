@@ -36,18 +36,16 @@ $ symfony run yarn encore dev
 Usage
 -----
 
-If you use Symfony with docker-compose, run this command :
-```bash
-$ docker-compose up -d
-$ symfony console doctrine:migrations:version --add --all
-$ symfony console make:migration
-$ symfony console doctrine:migrations:migrate
-$ symfony run psql -f meta_doc_copy.sql
-```
-
-If you use standalone postgresql, run this command (database: main, password: main, user: main):
+To create and populate the database, run this command (database: main, password: main, user: main):
 ```bash
 $ symfony run psql -f meta_doc.sql
+```
+
+If you just want to create the structure of the database with Symfony and docker-compose, you can run this command :
+```bash
+$ docker-compose up -d
+$ symfony console make:migration
+$ symfony console doctrine:migrations:migrate
 ```
 
 The username and password of the admin account are admin/admin.
