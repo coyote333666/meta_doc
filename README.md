@@ -41,7 +41,7 @@ To create and populate the database, run this command (database: main, password:
 $ symfony run psql -f meta_doc.sql
 ```
 
-If you just want to create the structure of the database with Symfony and docker-compose, you can run this command :
+If you just want to create the structure of the database with Symfony and docker-compose, you can run this command:
 ```bash
 $ docker-compose up -d
 $ symfony console make:migration
