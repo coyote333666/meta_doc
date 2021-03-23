@@ -44,7 +44,7 @@ parameters:
     app_locales: ar|en|fr|de|es|ru|it|ja|zh|pt
 ```
 
-To create public schema objects, use Symfony with docker or this script (database: main, password: main, user: main) :
+To create public schema objects, use Symfony with docker compose or this script (database: main, password: main, user: main):
 ```bash
 $ symfony run psql -f meta_doc.sql
 ```
