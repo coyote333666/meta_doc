@@ -22,7 +22,7 @@ Installation
 Verify that you have installed [composer][7], [git][8], [npm (node.js)][9], [yarn][10]
 and, depending on your environment, [docker-compose][11] OR [postgresql][12].
 
-Verify that you have PHP installed : `sudo apt-get install php` on linux or, for windows, include in [xamp][13].
+Verify that you have PHP installed : `sudo apt-get install php` on linux or, for windows, use php already included in xampp [xamp][13].
 If you have Windows, do not forget to indicate in the environment variable PATH, 
 the path to access php.exe (for example, C:\xampp\php).
 
