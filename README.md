@@ -5,7 +5,7 @@ It is better to manage the metadatas of documents in a relational database rathe
 
 To try to solve these problems simply, here is a basic document management (DM) system, with a search by metadata. Access to documents through a classification plan. The metadata categories as well as the types of relationships between documents are part of the Dublin Core repository. The ressource URL or attached documents URL are inside the field "text".
 
-I used [Symfony 5: The Fast Track][2] and [Symfony demo][3] to implement my [data model][4]
+I used [Symfony 5: The Fast Track][2] and [Symfony demo][3] to implement my [data model][4].
 
 Requirements
 ------------
@@ -22,9 +22,9 @@ Installation
 Verify that you have installed [composer][7], [git][8], [npm (node.js)][9], [yarn][10]
 and, depending on your environment, [docker-compose][11] OR [postgresql][12].
 
-Verify that you have PHP installed : "sudo apt-get install php" on linux or, for windows, include in [xamp][13])
+Verify that you have PHP installed : `sudo apt-get install php` on linux or, for windows, include in [xamp][13].
 If you have Windows, do not forget to indicate in the environment variable PATH, 
-the path to access php.exe (for example, C:\xampp\php)
+the path to access php.exe (for example, C:\xampp\php).
 
 [Download Symfony][5] to install the `symfony` binary on your computer and run
 this command:
