@@ -13,13 +13,18 @@ Requirements
   * PHP 7.2.9 or higher;
   * pdo_pgsql PHP extension enabled in php.ini;
   * intl PHP extension enabled in php.ini
-  * Postgresql standalone OR Docker and Docker compose
+  * Postgresql standalone OR Docker-compose
   * and the [usual Symfony application requirements][1].
 
 Installation
 ------------
 
-Verify that you have installed [composer][7], [git][8], [npm (node.js)][9] and [yarn][10].
+Verify that you have installed [composer][7], [git][8], [npm (node.js)][9], [yarn][10]
+and, depending on your environment, [docker-compose][11] OR [postgresql][12].
+
+Verify that you have PHP installed : "sudo apt-get install php" on linux or, for windows, include in [xamp][13])
+If you have Windows, do not forget to indicate in the environment variable PATH, 
+the path to access php.exe (for example, C:\xampp\php)
 
 [Download Symfony][5] to install the `symfony` binary on your computer and run
 this command:
@@ -36,16 +41,16 @@ $ symfony run yarn encore dev
 Usage
 -----
 
-To create and populate the database, run this command (database: main, password: main, user: main):
-```bash
-$ symfony run psql -f meta_doc.sql
-```
-
 If you just want to create the structure of the database with Symfony and docker-compose, you can run this command:
 ```bash
 $ docker-compose up -d
 $ symfony console make:migration
 $ symfony console doctrine:migrations:migrate
+```
+
+To create and populate the database, run this command (database: main, password: main, user: main):
+```bash
+$ symfony run psql -f meta_doc.sql
 ```
 
 The username and password of the admin account are admin/admin.
@@ -85,3 +90,6 @@ Apache to run the application.
 [8]: https://git-scm.com/
 [9]: https://www.npmjs.com/get-npm
 [10]: https://yarnpkg.com/getting-started/install
+[11]: https://docs.docker.com/compose/install/
+[12]: https://www.postgresql.org/
+[13]: https://www.apachefriends.org/index.html
