@@ -48,9 +48,14 @@ $ symfony console make:migration
 $ symfony console doctrine:migrations:migrate
 ```
 
-To create and populate the database, run this command (database: main, password: main, user: main):
+To create and populate the database, run this command (database: main, password: main, user: main) with Postgresql binaries installed:
 ```bash
 $ symfony run psql -f meta_doc.sql
+```
+OR, inside the docker container:
+```bash
+$ psql -f meta_doc.sql -U main 
+(password main)
 ```
 
 The username and password of the admin account are admin/admin.
