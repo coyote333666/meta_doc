@@ -47,8 +47,13 @@ $ docker-compose up -d
 $ symfony console make:migration
 $ symfony console doctrine:migrations:migrate
 ```
+If necessary, load Dublin Core data for your local parameter :
+```bash
+$ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
+$ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
+```
 
-To create and populate the database, run this command (database: main, password: main, user: main) with Postgresql binaries installed:
+If you want to create and populate the database (english version), run this command with Postgresql binaries installed:
 ```bash
 $ symfony run psql -f meta_doc.sql
 ```
@@ -56,14 +61,6 @@ OR, inside the docker container:
 ```bash
 $ psql -f meta_doc.sql -U main 
 (password main)
-```
-
-The username and password of the admin account are admin/admin.
-
-If necessary, load Dublin Core data for your local parameter :
-```bash
-$ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
-$ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
 ```
 
 Modify your locale parameter in /config/services.yaml:
@@ -84,6 +81,8 @@ Then access the application in your browser at the given URL (<https://localhost
 If you don't have the Symfony binary installed, run `php -S localhost:8000 -t public/`
 to use the built-in PHP web server or [configure a web server][6] like Nginx or
 Apache to run the application.
+
+The username and password of the admin account are admin/admin.
 
 [1]: https://symfony.com/doc/current/setup.html
 [2]: https://symfony.com/doc/current/the-fast-track/en/index.html
