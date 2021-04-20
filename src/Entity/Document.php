@@ -89,7 +89,7 @@ class Document
 
     public function __toString(): string
     {
-        return $this->title.'.'.$this->start_date->format('Y-m-d').'.'.$this->version;
+        return $this->classification.'.'.$this->title.'.'.$this->start_date->format('Y-m-d').'.'.$this->version;
     }
     
     public function getId(): ?int
