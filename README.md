@@ -30,7 +30,7 @@ the path to access php.exe (for example, C:\xampp\php).
 this command:
 
 ```bash
-$ git clone https://github.com/viniboy666/meta_doc meta_doc
+$ git clone https://github.com/coyote333666/meta_doc meta_doc
 $ cd metad_doc/
 $ composer update
 $ composer install --no-interaction
