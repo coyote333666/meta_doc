@@ -1,11 +1,16 @@
-Meta_doc
-========
+# meta_doc
+
 
 It is better to manage the metadatas of documents in a relational database rather than placing it in the title of a document in a file system. For example, Projectx_document2_20150101_v01.doc lost in a maze of subfolders, duplicated on several servers.
 
 To try to solve these problems simply, here is a basic document management (DM) system, with a search by metadata. Access to documents through a classification plan. The metadata categories as well as the types of relationships between documents are part of the Dublin Core repository. The ressource URL or attached documents URL are inside the field "text".
 
 I used [Symfony 5: The Fast Track][2] and [Symfony demo][3] to implement my [data model][4].
+
+![](/public/images/index.png)
+![](/public/images/root.png)
+![](/public/images/search.png)
+![](/public/images/admin.png)
 
 Requirements
 ------------
