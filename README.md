@@ -38,7 +38,7 @@ this command:
 
 ```bash
 $ git clone https://github.com/coyote333666/meta_doc meta_doc
-$ cd metad_doc/
+$ cd meta_doc/
 $ composer update
 $ composer install --no-interaction
 $ yarn add node-sass sass-loader --dev
