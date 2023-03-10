@@ -37,12 +37,12 @@ the path to access php.exe (for example, C:\xampp\php).
 this command:
 
 ```bash
-$ git clone https://github.com/coyote333666/meta_doc meta_doc
-$ cd meta_doc/
-$ composer update
-$ composer install --no-interaction
-$ yarn add node-sass sass-loader --dev
-$ symfony run yarn encore dev
+git clone https://github.com/coyote333666/meta_doc meta_doc
+cd meta_doc/
+composer update
+composer install --no-interaction
+yarn add node-sass sass-loader --dev
+symfony run yarn encore dev
 ```
 
 Usage
@@ -50,24 +50,23 @@ Usage
 
 If you just want to create the structure of the database with Symfony and docker-compose, you can run this command:
 ```bash
-$ docker-compose up -d
-$ symfony console make:migration
-$ symfony console doctrine:migrations:migrate
+docker-compose up -d
+symfony console make:migration
+symfony console doctrine:migrations:migrate
 ```
 If necessary, load Dublin Core data for your local parameter :
 ```bash
-$ symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
-$ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
+symfony run psql -f dublin_core/dublin_core_element_<your locale parameter>.sql
+symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
 ```
 
 If you want to create and populate the database (english version), run this command with Postgresql binaries installed:
 ```bash
-$ symfony run psql -f meta_doc.sql
+symfony run psql -f meta_doc.sql
 ```
-OR, inside the docker container:
+OR, inside the docker container (password main):
 ```bash
-$ psql -f meta_doc.sql -U main 
-(password main)
+psql -f meta_doc.sql -U main 
 ```
 
 Modify your locale parameter in /config/services.yaml:
@@ -80,7 +79,7 @@ parameters:
 
 Run application
 ```bash
-$ symfony server:start -d
+symfony server:start -d
 ```
 
 Then access the application in your browser at the given URL (<https://localhost:8000> by default).
