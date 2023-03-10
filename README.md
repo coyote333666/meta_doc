@@ -38,11 +38,11 @@ this command:
 
 ```bash
 git clone https://github.com/coyote333666/meta_doc meta_doc
-cd meta_doc/
+cd meta_doc
 composer update
 composer install --no-interaction
-yarn add node-sass sass-loader --dev
-symfony run yarn encore dev
+symfony run yarn add node-sass sass-loader --dev
+symfony run yarn add encore --dev
 ```
 
 Usage
@@ -63,10 +63,6 @@ symfony run psql -f dublin_core/dublin_core_relation_<your locale parameter>.sql
 If you want to create and populate the database (english version), run this command with Postgresql binaries installed:
 ```bash
 symfony run psql -f meta_doc.sql
-```
-OR, inside the docker container (password main):
-```bash
-psql -f meta_doc.sql -U main 
 ```
 
 Modify your locale parameter in /config/services.yaml:
