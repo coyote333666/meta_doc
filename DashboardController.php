@@ -11,7 +11,7 @@ use App\Entity\Metadata;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -19,12 +19,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class DashboardController extends AbstractDashboardController
 {
     private $translator;
-    private $adminUrlGenerator;
     
-    public function __construct(TranslatorInterface $translator, AdminUrlGenerator $adminUrlGenerator)
+    public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
-        $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
     /**
@@ -32,14 +30,8 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        $url = $this->adminUrlGenerator
-        ->setController(ClassificationCrudController::class)
-        //->setAction('edit')
-        //->setEntityId(1)
-        ->generateUrl();
-    
-        // $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
-        // $url = $routeBuilder->setController(ClassificationCrudController::class)->generateUrl();
+        $routeBuilder = $this->get(CrudUrlGenerator::class)->build();
+        $url = $routeBuilder->setController(ClassificationCrudController::class)->generateUrl();
 
         return $this->redirect($url);
     }
