@@ -4,7 +4,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.2.5",
+        "php": "7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.1",
@@ -13,7 +13,6 @@
         "doctrine/orm": "^2.8",
         "easycorp/easyadmin-bundle": "^3",
         "fakerphp/faker": "^1.13",
-        "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.5",
         "symfony/cache": "5.2.*",
         "symfony/console": "5.2.*",
