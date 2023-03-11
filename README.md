@@ -40,9 +40,13 @@ this command:
 git clone https://github.com/coyote333666/meta_doc meta_doc
 cd meta_doc
 composer update
+cp FrameworkExtension.php ./vendor/symfony/framework-bundle/DependencyInjection
+composer update
 composer install --no-interaction
-symfony run yarn add node-sass sass-loader --dev
-symfony run yarn add encore --dev
+cp -r build ./public
+# dependencies problems when creating buid with these commands :
+# symfony run yarn add node-sass sass-loader --dev
+# symfony run yarn add encore --dev
 ```
 
 Usage
